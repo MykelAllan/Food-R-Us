@@ -1,0 +1,137 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20rem;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.categ-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+
+}
+
+.categ-btns .btn {
+    padding: 0.3rem;
+    width: 6rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.categ-btns .btn:hover {
+    border-bottom: 2px solid #580667;
+    color: #580667;
+}
+
+.categ-btns .btn.active {
+    border-bottom: 2px solid #580667;
+    color: #580667;
+
+}
+
+
+
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 40rem;
+
+}
+
+.card {
+    width: 40%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.card .card-img {
+    position: relative;
+    width: 8rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .card-img img {
+    filter: drop-shadow(10px 17px 36px #000000);
+    width: 6rem;
+    aspect-ratio: 1;
+}
+
+.card .card-text {
+    text-transform: capitalize;
+    text-align: left;
+}
+
+
+
+.card .card-img .buy-icon {
+    width: 5.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(37, 37, 227, 0.8);
+    padding: 0.1rem;
+    border-radius: 0.5rem;
+    opacity: 1;
+    right: -80%;
+    bottom: 4%;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.card-img .buy-icon button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.card-img .buy-icon:hover {
+    background-color: #460551;
+}
+
+.card:hover .card-img img {
+    transition: 0.5s ease;
+
+}
+
+
+.card:hover .card-img img {
+    transform: translateY(-0.5rem);
+
+}
+
+.card .card-img {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+}

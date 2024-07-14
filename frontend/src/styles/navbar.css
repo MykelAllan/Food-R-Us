@@ -1,0 +1,40 @@
+.header {
+  background-color: #333;
+  padding: 5px 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-inline: 1.5rem;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #9325a6;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #9325a6;
+}
+
+.cart-totalItems {
+  font-size: 0.8rem;
+}
