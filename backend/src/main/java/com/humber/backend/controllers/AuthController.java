@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://food-r-us.vercel.app"})
 @RequestMapping("/auth")
 public class AuthController implements ErrorController {
 

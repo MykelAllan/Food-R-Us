@@ -5,7 +5,7 @@ import com.humber.backend.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://food-r-us.vercel.app"})
 @RequestMapping("/admin/products")
 public class AdminController {
 
