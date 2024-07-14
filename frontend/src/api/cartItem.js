@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8080/api/cart';
+const BASE_URL = 'https://food-r-us.onrender.com';
 
 export const getAllCartItems = async () => {
     try {
-        const res = await axios.get(`${BASE_URL}/`)
+        const res = await axios.get(`${BASE_URL}/api/cart'/`)
         return res.data
     } catch (err) {
         console.error('error fetching the cart items')

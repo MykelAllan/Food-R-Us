@@ -5,7 +5,7 @@ import com.humber.backend.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/admin/products")
 public class AdminController {
 

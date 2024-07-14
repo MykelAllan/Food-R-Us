@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = 'https://food-r-us.onrender.com'
 
 // export const loginUser = async (username, password) => {
 //     try {
@@ -21,7 +21,7 @@ const BASE_URL = 'http://localhost:8080'
 
 export const registerNewUser = async (newUser) => {
     try {
-        const response = await axios.post('http://localhost:8080/auth/register', JSON.stringify(newUser), {
+        const response = await axios.post(`${BASE_URL}/auth/register`, JSON.stringify(newUser), {
             headers: {
                 'Content-Type': 'application/json'
             }
