@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { AppContext } from '../context/context'
+import { CartContext } from '../../context/cartContext'
 
 
 export const CartCheckout = () => {
     const [visible, setVisible] = useState(false)
-    const { cartMsg, clearCartItems, fetchCart, getTotalCart } = useContext(AppContext)
+    const { cartMsg, clearCartItems, fetchCart, getTotalCart } = useContext(CartContext)
 
     const total = getTotalCart()
 

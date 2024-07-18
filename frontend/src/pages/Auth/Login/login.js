@@ -17,7 +17,7 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //await logInUser(username, password)
+    await logInUser(username, password)
     console.log(credentials)
   };
 

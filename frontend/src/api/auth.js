@@ -1,23 +1,29 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://food-r-us.onrender.com'
 
-// export const loginUser = async (username, password) => {
-//     try {
-//         const response = await axios.get('http://localhost:8080/auth/check', {
-//             auth: {
-//                 username,
-//                 password
-//             }
-//         });
-//         // Handle successful login
-//         //setMessage('Login successful');
-//         console.log('Login successful:', response.data);
-//     } catch (error) {
-        
-//         console.error('Login error:', error.response ? error.response.data : error.message);
-//     }
-// }
+const BASE_URL = process.env.REACT_APP_API_BASE_URL
+
+// const BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
+
+export const loginUser = async (username, password) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/auth/login`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            auth: {
+                username,
+                password
+            }
+        });
+        // Handle successful login
+        //setMessage('Login successful');
+        console.log('Login successful:', response.data);
+    } catch (error) {
+
+        console.error('Login error:', error.response ? error.response.data : error.message);
+    }
+}
 
 export const registerNewUser = async (newUser) => {
     try {

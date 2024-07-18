@@ -1,0 +1,13 @@
+.shop-container {
+    margin-inline: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.shop-content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}

@@ -1,54 +1,23 @@
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
+/* fetching product loading */
+.fetching-products {
+    position: absolute;
+    left: 35%;
 }
 
-.headline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20rem;
+.products-container {}
+
+.products-title {
+    color: #4d7111;
 }
 
-.filter-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.products-category-title {
+    color: #1f4b2c;
+    text-align: left;
+    margin: 1rem 0;
+    text-transform: capitalize;
 }
 
-.categ-btns {
-    display: flex;
-    flex-direction: row;
-    gap: 0.3rem;
-
-}
-
-.categ-btns .btn {
-    padding: 0.3rem;
-    width: 6rem;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-weight: 900;
-}
-
-.categ-btns .btn:hover {
-    border-bottom: 2px solid #580667;
-    color: #580667;
-}
-
-.categ-btns .btn.active {
-    border-bottom: 2px solid #580667;
-    color: #580667;
-
-}
-
-
-
-
+/* cards for products */
 .cards {
     display: flex;
     justify-content: space-between;
@@ -56,7 +25,6 @@
     flex-wrap: wrap;
     gap: 1rem;
     width: 40rem;
-
 }
 
 .card {
@@ -78,7 +46,7 @@
 }
 
 .card .card-img img {
-    filter: drop-shadow(10px 17px 36px #000000);
+    filter: drop-shadow(10px 17px 36px #1f4b2c);
     width: 6rem;
     aspect-ratio: 1;
 }
@@ -86,8 +54,17 @@
 .card .card-text {
     text-transform: capitalize;
     text-align: left;
+    height: 75%;
+
 }
 
+.card .card-text h3 {
+    color: #1f4b2c;
+}
+
+.card .card-text p {
+    color: #4d7111;
+}
 
 
 .card .card-img .buy-icon {
@@ -96,7 +73,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(37, 37, 227, 0.8);
+    background-color: #4d7111;
     padding: 0.1rem;
     border-radius: 0.5rem;
     opacity: 1;
@@ -104,7 +81,8 @@
     bottom: 4%;
     border: none;
     cursor: pointer;
-    color: #fff;
+    color: #f4fffc;
+    z-index: 1;
 }
 
 .card-img .buy-icon button {
@@ -117,7 +95,7 @@
 }
 
 .card-img .buy-icon:hover {
-    background-color: #460551;
+    background-color: #1f4b2c;
 }
 
 .card:hover .card-img img {
@@ -132,6 +110,7 @@
 }
 
 .card .card-img {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 1rem;
+    background-color: transparent;
+    border-radius: 0.2rem;
+    border: 2px solid #4d7111;
 }

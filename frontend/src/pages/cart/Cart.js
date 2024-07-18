@@ -1,7 +1,7 @@
 import React, { } from 'react'
 
-import { CartList } from '../../components/CartList'
-import { CartCheckout } from '../../components/CartCheckout'
+import { CartList } from '../../components/Cart/CartList'
+import { CartCheckout } from '../../components/Cart/CartCheckout'
 
 
 export const Cart = () => {

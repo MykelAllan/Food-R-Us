@@ -1,0 +1,52 @@
+.filter-container {
+    border-right: 2px solid #1f4b2c;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    height: 100vh;
+    
+}
+
+.filter-title {
+    color: #4d7111;
+    width: 11rem;
+}
+
+.filter-container h3 {
+    margin-bottom: 0.5rem;
+}
+
+.filter-container h3,
+.filter-container label
+{
+    color: #1f4b2c;
+}
+
+/* label and radio container */
+.filter-category,
+.filter-price {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.filter-category label,
+.filter-price label{
+    width: 5rem;
+    text-align: left;
+    padding-left: 0.5rem;
+    cursor: pointer;
+}
+
+
+.filter-category input,
+.filter-price input{
+    
+}
+
+.filter-category label:hover,
+.filter-price label:hover{
+    font-weight: 600;
+}

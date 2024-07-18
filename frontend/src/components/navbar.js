@@ -3,11 +3,12 @@ import '../styles/navbar.css';
 import 'boxicons';
 import { Link, useLocation } from 'react-router-dom';
 import { AppContext } from '../context/context';
+import { CartContext } from '../context/cartContext';
 
 export const Navbar = () => {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
-  const { getTotalCart } = useContext(AppContext)
+  const { getTotalCart } = useContext(CartContext)
 
   const total = getTotalCart()
 
@@ -43,7 +44,8 @@ export const Navbar = () => {
               className={`nav-link ${activeLink === '/cart' ? 'active' : ''}`}
               onClick={() => activeLinkHandler('/cart')}
             >
-              <box-icon color="#fff" name="cart"></box-icon> Cart<span className='cart-totalItems' >{total.totalItems}</span>
+              <box-icon color="#c3E956" name="cart"></box-icon> Cart
+              <span className='cart-totalItems' >{total.totalItems}</span>
             </Link>
           </li>
           <li className="nav-item">

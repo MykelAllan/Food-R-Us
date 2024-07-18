@@ -1,5 +1,5 @@
 .header {
-  background-color: #333;
+  background-color: #1f4b2c;
   padding: 5px 20px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .nav-link {
-  color: #fff;
+  color: #c3E956;
   text-decoration: none;
   padding: 10px;
   font-weight: 600;
@@ -28,11 +28,11 @@
 }
 
 .nav-link:hover {
-  border-bottom: 2px solid #9325a6;
+  border-bottom: 2px solid #91eaaf;
 }
 
 .nav-link.active {
-  border-bottom: 2px solid #9325a6;
+  border-bottom: 2px solid #91eaaf;
 }
 
 .cart-totalItems {

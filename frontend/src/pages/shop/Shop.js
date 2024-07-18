@@ -1,15 +1,19 @@
 import React from 'react'
 
-import { ProductList } from '../../components/ProductList'
-import { Products } from '../../components/Products'
+import { Products } from '../../components/Products/Products'
+import { Filter } from '../../components/Filter/Filter'
+
+import './shop.css'
 
 export const Shop = () => {
 
 
   return (
-    <div>
-      <h1>Welcome To FoodMart</h1>
-      <Products />
+    <div className='shop-container'>
+      <div className='shop-content'>
+        <Filter />
+        <Products />
+      </div>
     </div>
   )
 }

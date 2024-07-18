@@ -1,25 +1,41 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 
-import '../styles/carts.css'
+import './carts.css'
 
-import emptyCart from '../assets/img/empty-cart.png'
-import { AppContext } from '../context/context'
+import emptyCart from '../../assets/img/empty-cart.png'
+import { CartContext } from '../../context/cartContext'
+
 
 export const CartList = () => {
-    const { cartItems, fetchCart, addItemAmount, decreItemAmount, updateItemAmount, } = useContext(AppContext)
+    const { cartItems, fetchCart, addItemAmount, decreItemAmount, updateItemAmount, } = useContext(CartContext)
+    const [itemAmounts, setItemAmounts] = useState({})
 
-
-    const updateItemAmountHandler = async (item, value) => {
+    const onBlurHandler = (item, value) => {
         const amount = parseInt(value, 10);
-        if (amount > 0) {
-            await updateItemAmount?.(item.id, amount);
+        if (amount >= 0) {
+            updateItemAmount(item.id, amount);
         }
+
     }
+
+    const onChangeHandler = (item, value) => {
+        const updatedAmounts = { ...itemAmounts, [item.id]: value };
+        setItemAmounts(updatedAmounts);
+    };
+
 
     useEffect(() => {
         fetchCart()
     }, [])
+
+    useEffect(() => {
+        const initialAmounts = {};
+        cartItems.forEach(item => {
+            initialAmounts[item.id] = item.amount || 0;
+        });
+        setItemAmounts(initialAmounts);
+    }, [cartItems]);
 
     return (
         <div className="cart-container">
@@ -44,9 +60,10 @@ export const CartList = () => {
                                 </div>
                                 <div className='cart-item-btn'>
                                     <button onClick={() => decreItemAmount(item.id, item.amount)} className='container'>-</button>
-                                    <input text="number"
-                                        onChange={(e) => updateItemAmountHandler(item, e.target.value)}
-                                        value={item.amount || ''} />
+                                    <input type="text" inputMode='numeric'
+                                        onBlur={(e) => onBlurHandler(item, e.target.value)}
+                                        onChange={(e) => onChangeHandler(item, e.target.value)}
+                                        value={itemAmounts[item.id] || ''} />
                                     <button onClick={() => addItemAmount(item.id, item.amount)} className='container'>+</button>
                                 </div>
                             </div>

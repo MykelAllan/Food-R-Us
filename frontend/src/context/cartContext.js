@@ -1,92 +1,20 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { getAllCartItems, postAddToCart, deleteAllCartItems, updateCartItemAmount } from '../api/cartItem'
-import { getAllProducts, getProductsByCateg, postNewProduct } from '../api/products'
-import { registerNewUser, loginUser } from '../api/auth'
 
-export const AppContext = createContext()
 
-export const AppProvider = ({ children }) => {
-    const [products, setProducts] = useState([])
+export const CartContext = createContext()
+
+export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([])
-    const [message, setMessage] = useState('')
-    const [isProdFetch, setIsProdFetch] = useState(false)
     const [isAddCart, setIsAddCart] = useState(false)
     const [cartMsg, setCartMsg] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
-    const [user, setUser] = useState(null)
-    const [credentials, setCredentials] = useState({ username: '', password: '' })
 
     useEffect(() => {
-        fetchProducts()
+        fetchCart()
+
     }, [])
 
-    // //login
-    const logInUser = async (username, password) => {
-        try {
-            const response = await loginUser(username, password)
-            setUser(username)
-            setCredentials({ username, password })
-            console.log('Login successful:', response.data);
-        } catch (err) {
-            console.log('error logging in')
-            setUser(null)
-        }
 
-    }
-
-    //register
-    const registerUser = async (newUser) => {
-        try {
-            await registerNewUser(newUser)
-
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-
-
-    //products
-    const fetchProducts = async () => {
-        setIsProdFetch(true)
-        try {
-            const data = await getAllProducts();
-            setProducts(data);
-        } catch (err) {
-            console.error('Error fetching products:', err);
-            setProducts([]);
-        } finally {
-            setIsProdFetch(false)
-        }
-    };
-
-    const filterHandler = async (category) => {
-        setIsProdFetch(true)
-        try {
-            const data = await getProductsByCateg(category);
-            setProducts(data);
-        } catch (err) {
-            console.error('Error fetching products:', err);
-            setProducts([]);
-        } finally {
-            setIsProdFetch(false)
-        }
-    };
-    const createNewProduct = async (newProduct) => {
-        setIsLoading(true)
-        setMessage(null)
-        try {
-            const data = await postNewProduct(newProduct);
-            setProducts([...products, data])
-            setMessage(`${newProduct.name} is successfully saved`)
-
-        } catch (err) {
-            console.error('Error saving new product', err);
-            setProducts([]);
-        } finally {
-            setIsLoading(false)
-        }
-    };
 
     //cart items
 
@@ -153,7 +81,7 @@ export const AppProvider = ({ children }) => {
     const addToCart = async (cartItem) => {
         setIsAddCart(true)
         console.log(isAddCart)
-        
+
         try {
             await postAddToCart(cartItem);
             // setCartMsg(data); added to cart msg
@@ -162,7 +90,7 @@ export const AppProvider = ({ children }) => {
 
         } catch (err) {
             console.error('Error adding item to cart', err);
-        } 
+        }
     }
 
 
@@ -182,18 +110,17 @@ export const AppProvider = ({ children }) => {
     }
 
     const contextValue = {
-        products, cartItems, cartMsg, message, isLoading,
-        isProdFetch, fetchProducts, filterHandler, createNewProduct,
-        isAddCart, fetchCart, addToCart, clearCartItems, getTotalCart,
+        cartItems, cartMsg, isAddCart,
+        fetchCart, addToCart, clearCartItems, getTotalCart,
         addItemAmount, decreItemAmount, updateItemAmount,
-        logInUser, registerUser, user, credentials
+
     }
 
 
 
     return (
-        <AppContext.Provider value={contextValue}>
+        <CartContext.Provider value={contextValue}>
             {children}
-        </AppContext.Provider>
+        </CartContext.Provider>
     )
 }
