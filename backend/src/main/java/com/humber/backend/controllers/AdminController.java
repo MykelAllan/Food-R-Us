@@ -18,7 +18,7 @@ public class AdminController {
     //add new product
     @PostMapping("/add")
     public String addNewProduct(@RequestBody Product product) {
-        Product newProduct = productService.addNewProduct(product);
+        productService.addNewProduct(product);
 
         return "product succesffully saved!";
     }

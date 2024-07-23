@@ -6,6 +6,7 @@ import com.humber.backend.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "https://food-r-us.vercel.app"})
@@ -60,12 +62,35 @@ public class AuthController implements ErrorController {
             authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             Authentication authentication = authenticationManager.authenticate(authToken);
             // If authentication is successful, you can return a token or success message
-            return "Login successful";
+            return "Login successful: " + authentication;
         } catch (AuthenticationException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return "Login failed: " + e.getMessage();
         }
     }
+
+    //get userRole from user
+    @GetMapping("/get-role/{username}")
+    public ResponseEntity<String> getUserRole(@PathVariable String username) {
+        Optional<MyUser> user = userService.findByUsername(username);
+
+        return user.map(myUser
+                -> ResponseEntity.ok(myUser.getRole())).orElseGet(()
+                -> ResponseEntity.badRequest().body("data: " + "user not found"));
+
+    }
+
+    //get userId from user
+    @GetMapping("/get-id/{username}")
+    public ResponseEntity<String> getUserId(@PathVariable String username) {
+        Optional<MyUser> user = userService.findByUsername(username);
+
+        return user.map(myUser
+                -> ResponseEntity.ok(myUser.getId())).orElseGet(()
+                -> ResponseEntity.badRequest().body("data: " + "user not found"));
+
+    }
+
 
     @GetMapping("/check")
     public Map<String, String> checkAuthentication() {

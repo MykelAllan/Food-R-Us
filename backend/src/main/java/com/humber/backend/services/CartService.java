@@ -18,7 +18,7 @@ public class CartService {
 
     //add
     public CartItem addCartItem(CartItem cartItem) {
-        CartItem existingItem = cartRepository.findByProductId(cartItem.getProductId());
+        CartItem existingItem = cartRepository.findByProductIdAndUserId(cartItem.getProductId(), cartItem.getUserId());
 
         if (existingItem != null) {
             existingItem.setAmount(existingItem.getAmount() + cartItem.getAmount());
@@ -34,11 +34,14 @@ public class CartService {
 
     }
 
-    public List<CartItem> getAllCartItems() {
-        return cartRepository.findAll();
+    //get cartItems by user id
+    public List<CartItem> getCartItemsByUserId(String userId) {
+        return cartRepository.findByUserId(userId);
     }
 
     //update cartItem
+    //when item amount reaches 0 it will automatically delete
+    //transactional of having two database operations saving & delete
     @Transactional
     public void updateCartItemAmount(String id, int amount) {
         Optional<CartItem> cartItem = cartRepository.findById(id);
@@ -63,15 +66,15 @@ public class CartService {
 
     }
 
-    //clear cart items
-    public void clearCart() {
-        boolean isCartEmpty = cartRepository.count() == 0;
+    //clear cart items by userId
+    public void clearCartByUserId(String userId) {
+        long cartItemCount = cartRepository.countByUserId(userId);
 
-        if (isCartEmpty) {
+        if (cartItemCount == 0) {
             throw new IllegalStateException("Cart is Already Empty");
         }
 
-        cartRepository.deleteAll();
+        cartRepository.deleteItemsByUserId(userId);
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/cart")
-@CrossOrigin(origins = {"http://localhost:3000", "https://food-r-us.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.171:3000/", "https://food-r-us.vercel.app"})
 public class CartController {
 
     private final CartService cartService;
@@ -23,18 +23,19 @@ public class CartController {
         this.cartRepository = cartRepository;
     }
 
-    //gets the cart items
-    @GetMapping("/")
-    public List<CartItem> getAllCartItems() {
-        return cartService.getAllCartItems();
+    //gets the cart items by user id
+    @GetMapping("/{userId}")
+    public List<CartItem> getCartItemsByUserId(@PathVariable String userId) {
+        return cartService.getCartItemsByUserId(userId);
     }
 
+    //adds cartitem
     @PostMapping("/add")
-    public String addCartItem(@RequestBody CartItem cartItem) {
-        CartItem newCartItem = cartService.addCartItem(cartItem);
-        return "added an item to cart";
+    public CartItem addCartItem(@RequestBody CartItem cartItem) {
+        return cartService.addCartItem(cartItem);
     }
 
+    //updates cart item amount from checkout
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCartItemAmount(@PathVariable String id, @RequestBody Map<String, Integer> request) {
         int amount = request.get("amount");
@@ -53,10 +54,10 @@ public class CartController {
     }
 
     //clear all cart items
-    @DeleteMapping("/clear")
-    public ResponseEntity<String> clearCartItems() {
+    @DeleteMapping("/clear/{userId}")
+    public ResponseEntity<String> clearCartItems(@PathVariable String userId) {
         try {
-            cartService.clearCart();
+            cartService.clearCartByUserId(userId);
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

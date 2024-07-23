@@ -5,6 +5,8 @@ import com.humber.backend.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -13,6 +15,11 @@ public class UserService {
     public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    //find user by username
+    public Optional<MyUser> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     //saves user

@@ -17,6 +17,7 @@ public class CartItem {
     @Id
     private String id;
     private String productId;
+    private String userId;
     private String name;
     private double price;
     private String imageUrl;
