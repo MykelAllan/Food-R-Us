@@ -1,10 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { getAllCartItems, postAddToCart, deleteAllCartItems, updateCartItemAmount } from '../api/cartItem'
+import { AuthContext } from './authContext'
 
 
 export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
+    const { userId } = useContext(AuthContext)
     const [cartItems, setCartItems] = useState([])
     const [isAddCart, setIsAddCart] = useState(false)
     const [cartMsg, setCartMsg] = useState('')
@@ -65,7 +67,7 @@ export const CartProvider = ({ children }) => {
     const fetchCart = async () => {
         setIsAddCart(true)
         try {
-            const data = await getAllCartItems();
+            const data = await getAllCartItems(userId);
             getTotalCart()
             setCartItems(data);
 
@@ -81,9 +83,8 @@ export const CartProvider = ({ children }) => {
     const addToCart = async (cartItem) => {
         setIsAddCart(true)
         console.log(isAddCart)
-
         try {
-            await postAddToCart(cartItem);
+            await postAddToCart(cartItem, userId);
             // setCartMsg(data); added to cart msg
             fetchCart()
             console.log(`${cartItem.name} is successfully saved ${isAddCart}`)
@@ -97,7 +98,7 @@ export const CartProvider = ({ children }) => {
     const clearCartItems = async () => {
         setCartMsg("")
         try {
-            const res = await deleteAllCartItems();
+            const res = await deleteAllCartItems(userId);
             const msg = res.response.data;
             setCartItems([]);
             if (msg) {

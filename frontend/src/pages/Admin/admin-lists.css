@@ -1,0 +1,57 @@
+/* admin table styles*/
+.admin-lists-content {
+    width: 50rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-lists-table {
+    width: 100%;
+    border: 2px solid #000;
+}
+
+.admin-lists-header th {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 1rem;
+}
+
+.admin-lists {
+    text-transform: capitalize;
+}
+
+.admin-actions-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.admin-icons {
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.admin-icons.delete {
+    background-color: red;
+    border-radius: 0.2rem;
+
+}
+
+.admin-icons.update {
+    background-color: rgb(162, 162, 49);
+    border-radius: 0.2rem;
+
+}
+
+.admin-icons:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* products styles */
+
+.admin-lists img {
+    width: 3.2rem;
+    aspect-ratio: 1;
+}

@@ -1,22 +1,23 @@
 import axios from 'axios'
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL
+// const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
-// const BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
+const BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
 
-export const getAllCartItems = async () => {
+export const getAllCartItems = async (userId) => {
     try {
-        const res = await axios.get(`${BASE_URL}/api/cart/`)
+        const res = await axios.get(`${BASE_URL}/api/cart/${userId}`)
         return res.data
     } catch (err) {
         console.error('error fetching the cart items')
+        return []
 
     }
 }
 
-export const postAddToCart = async (cartItem) => {
+export const postAddToCart = async (cartItem, userId) => {
     try {
-        const res = await axios.post(`${BASE_URL}/api/cart/add`, cartItem, {
+        const res = await axios.post(`${BASE_URL}/api/cart/add`, {...cartItem, userId}, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -39,9 +40,9 @@ export const updateCartItemAmount = async (id, amount) => {
     }
 }
 
-export const deleteAllCartItems = async () => {
+export const deleteAllCartItems = async (userId) => {
     try {
-        const res = await axios.delete(`${BASE_URL}/api/cart/clear`)
+        const res = await axios.delete(`${BASE_URL}/api/cart/clear/${userId}`)
         return res.data
     } catch (err) {
         console.error('error clearing the cart', err)

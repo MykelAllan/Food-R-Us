@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import './filter.css'
 
@@ -11,8 +11,10 @@ const categories = [
 
 export const CategoryButtons = (props) => {
     const { filterHandler, defaultFilterProducts } = props.data
+    const [selectedFilter, setSelectedFilter] = useState('');//default filter - all
 
     const changeHandler = (filter) => {
+        setSelectedFilter(filter);
         filterHandler(filter);
     };
 
@@ -21,6 +23,7 @@ export const CategoryButtons = (props) => {
             {categories.map(category => (
                 <div key={category.name} className='filter-category'>
                     <input type='radio' id={`${category.id}`} name='category'
+                        checked={selectedFilter === category.filter}
                         onChange={() => changeHandler(category.filter)}
                     />
                     <label htmlFor={`${category.id}`}>{category.name}</label>

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL
+// const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
-// const BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
+const BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
 
 export const getAllProducts = async () => {
     try {
@@ -10,6 +10,7 @@ export const getAllProducts = async () => {
         return res.data;
     } catch (err) {
         console.error('error fetching products')
+        return []
     }
 }
 
@@ -19,6 +20,7 @@ export const getProductsByCateg = async (category) => {
         return res.data;
     } catch (err) {
         console.error(`error fetching products with categ ${category}`)
+        return []
     }
 }
 

@@ -1,31 +1,48 @@
-import React, { useContext, useState } from 'react'
-
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react'
 
 import 'boxicons'
 import '.././auth.css'
-import { AppContext } from '../../../context/context';
+
+import { AuthContext } from '../../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const Login = () => {
+  const { logInUser, isLoggedIn } = useContext(AuthContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const {user, credentials, logInUser} = useContext(AppContext)
 
+  const navigate = useNavigate()
 
-
-  const handleSubmit = async (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
-    await logInUser(username, password)
-    console.log(credentials)
+    console.log(isLoggedIn)
+    const result = await logInUser(username, password)
+    if (result) { //if success then navigate back to home 
+      navigate('/')
+      window.location.reload()
+
+    } else {
+      console.log('wrong username or password entered')
+      setUsername('')
+      setPassword('')
+    }
+
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/')
+    }
+  }, [])
+
 
 
   return (
     <div className='auth-body container'>
       <a className='back-link' href="/">Home</a>
-      <form className='auth-form center' onSubmit={handleSubmit}>
+      <form className='auth-form center' onSubmit={loginHandler}>
         <h1>Login</h1>
         <div className='auth-form-inputs'>
           <div className='auth-form-input'>

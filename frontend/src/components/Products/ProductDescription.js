@@ -1,22 +1,33 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './prod-desc.css'
 
 import { TailSpin } from 'react-loader-spinner'
+import { AuthContext } from '../../context/authContext'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export const ProductDescription = (props) => {
-    const { 
-        product, toggleProdDesc, handleAddToCart, 
+    const { isLoggedIn } = useContext(AuthContext)
+    const {
+        product, toggleProdDesc, handleAddToCart,
         isAdding, setIsAdding,
         isAdded, setIsAdded
     } = props.data
 
+    const navigate = useNavigate()
+
     const addToCartHandler = () => {
-        setIsAdding(true)
-        handleAddToCart(product);
-        setTimeout(() => {
-            setIsAdding(false);
-            setIsAdded(true);
-        }, 1000);
+        // direct to login if user is not logged in
+        if (!isLoggedIn) {
+            navigate('/auth/login')
+        } else {
+            setIsAdding(true)
+            handleAddToCart(product);
+            setTimeout(() => {
+                setIsAdding(false);
+                setIsAdded(true);
+            }, 1000);
+        }
+
 
     }
 

@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 
 
 import { AppProvider } from './context/context';
+import { AuthProvider } from './context/authContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AppProvider>
+  <AuthProvider>
     <App />
-  </AppProvider>
+  </AuthProvider>
 
 
 );

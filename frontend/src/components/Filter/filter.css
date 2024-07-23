@@ -5,8 +5,7 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 3rem;
-    height: 100vh;
-    
+    height: 80%;
 }
 
 .filter-title {
@@ -41,9 +40,11 @@
 }
 
 
-.filter-category input,
-.filter-price input{
-    
+.filter-category-content,
+.filter-price-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
 .filter-category label:hover,

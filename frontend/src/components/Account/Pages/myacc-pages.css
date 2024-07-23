@@ -1,0 +1,72 @@
+/* signout */
+.signout-content {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.signout-content button {
+    width: 80%;
+    max-width: 800px;
+    height: 10%;
+    border-radius: 0.4rem;
+    background-color: #4d7111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.signout-content button:hover {
+    transform: scale(1.02);
+}
+
+/* signout confirmation */
+.signout-confirmation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+}
+
+.signout-confirmation-content {
+    display: grid;
+    place-items: center;
+    width: 30%;
+    max-width: 450px;
+    height: 30%;
+    background-color: #fff;
+    border: 2px solid #4d7111;
+}
+
+.signout-confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+.signout-confirmation-buttons button {
+    width: 40%;
+    height: 2.5rem;
+}
+
+.signout-confirmation-buttons button:nth-child(2) {
+    background-color: #fff;
+    border: 2px solid #4d7111;
+    color: #4d7111;
+}

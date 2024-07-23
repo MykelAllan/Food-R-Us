@@ -4,11 +4,12 @@ import { ProductForm } from './product-form';
 
 
 import './newproduct.css'
-import { AppContext } from '../../../context/context';
+import { ProductContext } from '../../../../context/productContext';
+
 
 
 export const NewProduct = () => {
-    const { message, createNewProduct } = useContext(AppContext)
+    const { message, createNewProduct } = useContext(ProductContext)
     //product model
     const [product, setProduct] = useState({
         name: '',

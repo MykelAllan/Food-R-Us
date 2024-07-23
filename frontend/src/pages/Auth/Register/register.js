@@ -1,16 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 
 import axios from 'axios';
 import { AppContext } from '../../../context/context';
+import { AuthContext } from '../../../context/authContext';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 export const Register = () => {
-    const { registerUser } = useContext(AppContext)
+    const { registerUser, isLoggedIn } = useContext(AuthContext)
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [role, setRole] = useState('USER')
+    const [role, setRole] = useState('USER') //default role
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,6 +29,12 @@ export const Register = () => {
         await registerUser(newUser)
 
     };
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate('/')
+        }
+    }, [])
 
 
     return (
