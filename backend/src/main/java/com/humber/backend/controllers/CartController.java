@@ -1,7 +1,6 @@
 package com.humber.backend.controllers;
 
 import com.humber.backend.models.CartItem;
-import com.humber.backend.repositories.CartRepository;
 import com.humber.backend.services.CartService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +14,9 @@ import java.util.Map;
 public class CartController {
 
     private final CartService cartService;
-    private final CartRepository cartRepository;
 
-
-    public CartController(CartService cartService, CartRepository cartRepository) {
+    public CartController(CartService cartService) {
         this.cartService = cartService;
-        this.cartRepository = cartRepository;
     }
 
     //gets the cart items by user id
@@ -47,6 +43,7 @@ public class CartController {
         return ResponseEntity.ok("updated cart item amount successfully");
     }
 
+    //deletes an item
     @DeleteMapping("/{id}")
     public String removeCartItem(@PathVariable String id) {
         cartService.removeCartItem(id);

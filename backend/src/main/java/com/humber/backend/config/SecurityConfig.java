@@ -31,14 +31,13 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/api/products/**", "/api/cart/**").permitAll()
+                        .requestMatchers("/auth/**", "/api/products/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/store/**").hasAnyRole("ADMIN", "USER")
-                        .anyRequest().permitAll()
+                        .requestMatchers("/api/cart/**").hasAnyRole("ADMIN", "USER")
+                        .anyRequest().authenticated()
                 ).csrf(AbstractHttpConfigurer::disable)
-                .formLogin(AbstractHttpConfigurer::disable)
-                .httpBasic(withDefaults())
+                .formLogin(AbstractHttpConfigurer::disable) //basic auth form login
+                .httpBasic(withDefaults()) //using basic authentication
                 .logout(withDefaults());
         return http.build();
     }

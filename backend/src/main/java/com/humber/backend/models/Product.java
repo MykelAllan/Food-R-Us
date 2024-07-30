@@ -15,10 +15,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Product {
 
     @Id
-    private String id;
+    private String id; //id is a string since mongodb has its own generated id
     private String name;
     private String category;
     private double price;
+    //optional disounts
+    private double discountPercentage;
+    private double discountedPrice;
+
+
+    //product image url
     private String imageUrl;
 }
 

@@ -5,9 +5,10 @@ import com.humber.backend.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.171:3000/","https://food-r-us.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.171:3000/", "https://food-r-us.vercel.app"})
 @RequestMapping("/api/products")
 public class ProductController {
     private final ProductService productService;
@@ -16,16 +17,28 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
+    //gets products // filter products by category and price
+    @GetMapping
+    public List<Product> getAllProducts(
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice
+    ) {
+        return productService.getProducts(category, minPrice, maxPrice);
     }
 
-    //get products by category
-    @GetMapping("/{category}")
-    public List<Product> getProductByCategory(@PathVariable String category) {
-        String lower = category.toLowerCase();
-        return productService.getProductByCategory(lower);
+    //gets all discounted products
+    @GetMapping("/discounted")
+    public List<Product> getDiscountedProducts() {
+        return productService.getDiscountedProducts();
     }
+
+    //gets all products by name
+    @GetMapping("/by-name")
+    public List<Product> getProductsByName(@RequestParam(required = false) String name) {
+        return productService.getProductsByName(name);
+
+    }
+
 
 }

@@ -31,8 +31,22 @@ public class UserService {
         //encode the password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // save the user
+        // validate and save the user
+        validateUser(user);
         userRepository.save(user);
         return 1;// successfuly saved
+    }
+
+    //validates user before saving
+    private void validateUser(MyUser user) {
+        if (user.getUsername() == null) {
+            throw new IllegalArgumentException("Username cannot be null");
+        }
+        if (user.getPassword() == null) {
+            throw new IllegalArgumentException("Password cannot be null");
+        }
+        if (user.getRole() == null) {
+            throw new IllegalArgumentException("Role cannot be null");
+        }
     }
 }

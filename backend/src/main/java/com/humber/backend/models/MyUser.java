@@ -1,5 +1,6 @@
 package com.humber.backend.models;
 
+import com.mongodb.lang.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class MyUser {
 
     @Id
-    private String id;
+    private String id; //id is a string since mongodb has its own generated id
+
     private String username;
     private String password;
     private String role;

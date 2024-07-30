@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CartRepository extends MongoRepository<CartItem, String> {
 
-    //checks for duplicate items for adding to cart
+    //handler for duplicate items for adding to cart
     CartItem findByProductIdAndUserId(String productId, String userId);
 
     //cart items counter/length
