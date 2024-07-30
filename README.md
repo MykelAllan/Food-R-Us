@@ -5,8 +5,7 @@ Food-R-Us is an e-commerce website that sells groceries such as fruit, vegetable
 ## Features
 
 - **Hero Section**: 
- - A dynamic and engaging hero section that highlights featured products like strawberries, watermelon, and dairy items.
-
+  - A dynamic and engaging hero section highlighting featured products like strawberries, watermelon, and dairy items.
 
 - **Product Categories**:
   - **Fruit**: Fresh and high-quality fruits including strawberries, watermelons, and more.
