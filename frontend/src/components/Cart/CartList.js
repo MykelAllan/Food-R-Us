@@ -52,11 +52,19 @@ export const CartList = () => {
                         {cartItems.map((item) => (
                             <div className='cart-item' key={item.id}>
                                 <div className='cart-item-img'>
-                                    <img src={item.imageUrl} />
+                                    {item.discountPercentage > 0 && <label className='discount-tag'>{item.discountPercentage}%</label>}
+                                    <img src={item.imageUrl} loading='lazy' />
                                 </div>
                                 <div className='cart-item-text'>
                                     <h1>{item.name}</h1>
-                                    <h2>${item.price.toFixed(2)}</h2>
+                                    <h2>
+                                        {item.discountPercentage > 0 ?
+                                            <label className='discounted-price'><span className='regular-price'>${item.price.toFixed(2)}</span>${item.discountedPrice.toFixed(2)}</label>
+                                            :
+                                            <label>${item.price.toFixed(2)}</label>
+                                        }
+
+                                    </h2>
                                 </div>
                                 <div className='cart-item-btn'>
                                     <button onClick={() => decreItemAmount(item.id, item.amount)} className='container'>-</button>

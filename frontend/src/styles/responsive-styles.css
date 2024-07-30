@@ -1,0 +1,28 @@
+/* media queries for different screens */
+
+/* desktop */
+@media screen and (min-width: 1800px) {
+    .cards {
+        grid-template-columns: repeat(5, 2fr);
+    }
+}
+@media screen and (max-width: 1690px) {
+    .cards {
+        grid-template-columns: repeat(4, 2fr);
+    }
+}
+
+/* laptop */
+@media only screen and (max-width: 1390px) {
+    .cards {
+        grid-template-columns: repeat(3, 2fr);
+    }
+}
+@media only screen and (max-width: 1160px) {
+    .cards {
+        grid-template-columns: repeat(2, 2fr);
+        gap: 2rem;
+    }
+}
+
+

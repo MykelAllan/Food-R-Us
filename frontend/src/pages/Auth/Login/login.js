@@ -5,28 +5,28 @@ import '.././auth.css'
 
 import { AuthContext } from '../../../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
 export const Login = () => {
-  const { logInUser, isLoggedIn } = useContext(AuthContext)
+  const { logInUser, isLoggedIn, isAdmin } = useContext(AuthContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
   const loginHandler = async (e) => {
+    setUsername('')
+    setPassword('')
     e.preventDefault();
-    console.log(isLoggedIn)
     const result = await logInUser(username, password)
     if (result) { //if success then navigate back to home 
       navigate('/')
-      window.location.reload()
-
+      isAdmin()
+      //window.location.reload()
     } else {
       console.log('wrong username or password entered')
-      setUsername('')
-      setPassword('')
     }
 
   };

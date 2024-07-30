@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import '../../App.css';
-import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
+import '../../styles/discount-price.css'
+import '../../styles/responsive-styles.css'
+import { BrowserRouter as Router, Route, Routes, Outlet, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 import { Login } from '../../pages/Auth/Login/login';
 import { Register } from '../../pages/Auth/Register/register';
@@ -12,33 +14,55 @@ import { Navbar } from '../Navbar/defaultNav';
 import { LoggedInNavbar } from '../Navbar/loggedInNav';
 import { Dashboard } from '../../pages/Admin/Dashboard/Dashboard';
 import { NewProduct } from '../../pages/Admin/Products/CreateNewProduct/NewProduct';
+import { UpdateProduct } from '../../pages/Admin/Products/UpdateProduct/UpdateProduct';
+import { ProductContext } from '../../context/productContext';
+import { toast } from 'react-toastify';
 
 export const MainApp = () => {
     const { isLoggedIn } = useContext(AuthContext)
+    const { } = useContext(ProductContext)
+    const navigate = useNavigate()
+
+    // search product handler
+    const searchProductHandler = (productName) => {
+        console.log('searching for ', productName)
+        if (productName.trim() === '') {
+            toast.error('Please enter a product', {
+                autoClose: 4000
+            })
+        } else {
+            console.log('navigating')
+            navigate(`/shop/search/${productName}`)
+        }
+    }
+
+
     return (
         <div className="App">
-            <Router>
-                <Routes>
-                    <Route element={<WithNavbar isLoggedIn={isLoggedIn} />}>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/shop" element={<Shop />} />
-                        <Route path="/cart" element={<Cart />} />
-                        <Route path="/myaccount" element={<MyAccount />} />
-                        <Route path="/admin/dashboard" element={<Dashboard />} />
-                        <Route path="/newproduct" element={<NewProduct />} />
-                    </Route>
 
-                    <Route path="/auth/login" element={<Login />} />
-                    <Route path="/auth/register" element={<Register />} />
-                </Routes>
-            </Router>
+            <Routes>
+                <Route element={<WithNavbar searchProductHandler={searchProductHandler} isLoggedIn={isLoggedIn} />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/shop" element={<Shop />} />
+                    <Route path="/shop/search/:product" element={<Shop />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/myaccount" element={<MyAccount />} />
+                </Route>
+                {/* without navbar */}
+                <Route path="/auth/login" element={<Login />} />
+                <Route path="/auth/register" element={<Register />} />
+                <Route path="/admin/dashboard" element={<Dashboard />} />
+                <Route path="/admin/add-product" element={<NewProduct />} />
+                <Route path="/admin/update-product/:productId" element={<UpdateProduct />} />
+            </Routes>
+
         </div>
     )
 }
 
-const WithNavbar = ({ isLoggedIn }) => (
+const WithNavbar = ({ isLoggedIn, searchProductHandler }) => (
     <>
-        {isLoggedIn ? <LoggedInNavbar /> : <Navbar />}
+        {isLoggedIn ? <LoggedInNavbar searchProductHandler={searchProductHandler} /> : <Navbar searchProductHandler={searchProductHandler} />}
         <Outlet />
     </>
 );

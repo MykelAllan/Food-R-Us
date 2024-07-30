@@ -41,7 +41,7 @@ export const MyAccContent = (props) => {
         <div className='myacc-content-container'>
             <div className='myacc-content-header'>
                 <h1>Welcome Back, <span>{user}</span>!</h1>
-                {userRole === 'ADMIN' && <button onClick={adminHandler}>Access Admin Dashboard</button>}
+                {userRole === 'ADMIN' && <button className='admin-access-btn' onClick={adminHandler}>Access Admin Dashboard</button>}
 
             </div>
             {/* current page */}

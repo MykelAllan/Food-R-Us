@@ -3,20 +3,10 @@ import { CartContext } from '../../context/cartContext'
 
 
 export const CartCheckout = () => {
-    const [visible, setVisible] = useState(false)
-    const { cartMsg, clearCartItems, fetchCart, getTotalCart } = useContext(CartContext)
+    const { clearCartItems, fetchCart, getTotalCart } = useContext(CartContext)
 
     const total = getTotalCart()
 
-    const fadeOutMsg = () => {
-        if (cartMsg) {
-            setVisible(true);
-            const timer = setTimeout(() => {
-                setVisible(false);
-            }, 1500);
-            return () => clearTimeout(timer);
-        }
-    }
     const clearCartHandler = async () => {
         try {
             await clearCartItems();
@@ -38,10 +28,8 @@ export const CartCheckout = () => {
                 <button className='cart-checkout'>Checkout</button>
                 <button onClick={() => {
                     clearCartHandler()
-                    fadeOutMsg()
                 }} className='cart-remove'>Clear Cart</button>
-                {/* message */}
-                <p className={`cart-msg ${visible ? 'fade-in' : 'fade-out'}`}>{cartMsg}</p>
+
             </div>
         </div>
     )

@@ -9,6 +9,25 @@
     gap: 2rem;
     background-color: seagreen;
     align-items: start;
+    position: relative;
+}
+
+.admin-goBack-btn {
+    position: absolute;
+    top: 0.5rem;
+    z-index: 10;
+    background-color: #3498db;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border: 2px solid #3498db;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.admin-goBack-btn:hover {
+    transform: scale(1.03);
 }
 
 .form-container {
@@ -21,6 +40,8 @@
     border-radius: 1.5rem;
     position: relative;
 }
+
+
 
 .form-nav {
     width: 100%;
@@ -108,6 +129,17 @@
     color: #746c6c;
 }
 
+/* for update-form */
+.form-input.discount {
+    display: none;
+    position: absolute;
+    bottom: -1rem;
+    right: 1.5rem;
+}
+.form-input.discount input {
+    width: 5rem;
+}
+
 /* prev-page */
 .prev-page {
     gap: 2rem;
@@ -153,7 +185,7 @@
     left: 23%;
     font-weight: 600;
     border: 2px solid #41ec5a;
-    background-color: #41ec5a;
+    background-color: #6b9b73;
     border-radius: 0.3rem;
     color: #fff;
     padding: 0.7rem;
@@ -165,20 +197,6 @@
 .submit-btn:hover {
     background-color: #237730;
 }
-
-/* data message */
-.message {
-    position: absolute;
-    top: 10%;
-    left: 34%;
-    padding: 0 0.7rem;
-    background-color: transparent;
-    border: 2px solid #41ec5a;
-    color: #41ec5a;
-    font-weight: 600;
-    border-radius: 0.3rem;
-}
-
 
 /* laptop screen */
 @media screen and (max-width: 1550px) {

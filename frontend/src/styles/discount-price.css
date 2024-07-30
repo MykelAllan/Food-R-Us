@@ -1,0 +1,39 @@
+/* prices style */
+/* discounted products */
+
+.regular-price {
+    color: #708090;
+    text-decoration: line-through;
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.discounted-price {
+    color: #FF6347;
+    font-weight: 600;
+}
+
+.discount-tag {
+    position: absolute;
+    background-color: #FF6347;
+    color: #fff;
+    padding: 0.2rem 0.8rem;
+    border-radius: 1.5rem;
+    font-size: 0.8rem;
+    z-index: 2;
+}
+
+.admin-list-price-tag {
+    position: relative;
+}
+
+.admin-list-price-tag .discount-tag {
+    right: -2rem;
+}
+
+/* product lists */
+.card-img .discount-tag {
+    left: 0.2rem;
+    top: 0.2rem;
+}

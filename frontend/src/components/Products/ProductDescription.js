@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { toast } from 'react-toastify';
 import './prod-desc.css'
 
 import { TailSpin } from 'react-loader-spinner'
@@ -19,6 +20,9 @@ export const ProductDescription = (props) => {
         // direct to login if user is not logged in
         if (!isLoggedIn) {
             navigate('/auth/login')
+            toast.info("Sign In to add product to cart", {
+                autoClose: 4000
+            })
         } else {
             setIsAdding(true)
             handleAddToCart(product);

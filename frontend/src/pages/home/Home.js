@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../../context/authContext'
+import React, { } from 'react'
+
+import { MainHome } from '../../components/Home/MainHome'
 
 export const Home = () => {
-
     return (
-        <div className='home-container'>
-            Home Page
-        </div>
+        <MainHome />
     )
 }
+

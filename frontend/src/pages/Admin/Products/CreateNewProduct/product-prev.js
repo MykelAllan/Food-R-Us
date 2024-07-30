@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './newproduct.css'
+import './productForm.css'
 
 export const ProductPrev = (props) => {
     const { product } = props

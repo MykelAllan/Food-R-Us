@@ -1,16 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react'
 
-import axios from 'axios';
-import { AppContext } from '../../../context/context';
 import { AuthContext } from '../../../context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { RegisterForm } from './registerForm';
 
 
 
 
 export const Register = () => {
     const { registerUser, isLoggedIn } = useContext(AuthContext)
-
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [role, setRole] = useState('USER') //default role
@@ -20,14 +18,16 @@ export const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
         const newUser = {
             username: username,
             password: password,
             role: role
         };
-
         await registerUser(newUser)
-
+        setPassword('')
+        setUsername('')
+        setRole('USER')
     };
 
     useEffect(() => {
@@ -40,56 +40,7 @@ export const Register = () => {
     return (
         <div className='auth-body container'>
             <a className='back-link' href="/">Home</a>
-            <form className='auth-form center' onSubmit={handleSubmit}>
-                <h1>Register</h1>
-                <div className='auth-form-inputs'>
-                    <div className='auth-form-input'>
-                        <label>Username <span>*</span></label>
-                        <input
-                            type="text"
-                            name="username"
-                            placeholder='Username'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required />
-
-                        <div className='icon'><box-icon color='#fff' name='user' type='solid' ></box-icon></div>
-                    </div>
-                    <div className='auth-form-input'>
-                        <label>Password <span>*</span></label>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder='Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required />
-                        <div className='icon'><box-icon color='#fff' name='lock-alt' type='solid' ></box-icon></div>
-                    </div>
-                    <div className="auth-form-input">
-                        <label >Role <span>*</span></label>
-                        <select
-                            className="auth-form-select"
-                            aria-label="role"
-                            id="role"
-                            name="role"
-                            value={role}
-                            onChange={(e) => setRole(e.target.value)}
-                            required>
-                            <option value="USER">User</option>
-                            <option value="ADMIN">Admin</option>
-                        </select>
-                        <div className='icon'><box-icon color='#fff' name='down-arrow' type='solid' ></box-icon></div>
-
-                    </div>
-                    <input type="submit" value="Register" className='auth-submit-btn auth-register' />
-                </div>
-                <div className='auth-link'>
-                    <label>Already have an account?  <a href="/auth/login">Login</a>
-                    </label>
-                </div>
-            </form>
-
+            <RegisterForm data={{ username, setUsername, password, setPassword, role, setRole, handleSubmit }} />
         </div>
     )
 }

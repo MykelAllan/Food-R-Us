@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { IoLocationOutline } from "react-icons/io5";
-
 
 export const Navigation = (props) => {
   const { navigate, logOutUser, currentPage, setCurrentPage } = props.data
@@ -20,12 +19,8 @@ export const Navigation = (props) => {
     setCurrentPage(page)
   }
 
-  const signOutHandler = () => {
-    navigate('/')
-    logOutUser()
 
 
-  }
   return (
     <div className='myacc-nav-container'>
       <div className='myacc-title'><h1>My Account</h1></div>
@@ -39,7 +34,7 @@ export const Navigation = (props) => {
         <div className='myacc-nav-link-icon'>
           <box-icon name='heart'></box-icon>
         </div>
-        <button >Wishlist</button>
+        <button>Wishlist</button>
       </div>
 
       <div className='myacc-nav-link' onClick={(e) => activeLinkHandler(e, 'address')}>
@@ -66,7 +61,11 @@ export const Navigation = (props) => {
           <box-icon name='log-out-circle'></box-icon>
         </div>
         <button>Sign Out</button>
+       
       </div>
+      
     </div>
   )
 }
+
+

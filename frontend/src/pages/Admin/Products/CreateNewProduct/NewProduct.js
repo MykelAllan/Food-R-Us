@@ -3,21 +3,13 @@ import { ProductPrev } from './product-prev';
 import { ProductForm } from './product-form';
 
 
-import './newproduct.css'
+import './productForm.css'
 import { ProductContext } from '../../../../context/productContext';
-
-
+import { useNavigate } from 'react-router-dom';
 
 export const NewProduct = () => {
-    const { message, createNewProduct } = useContext(ProductContext)
-    //product model
-    const [product, setProduct] = useState({
-        name: '',
-        category: '',
-        price: 0,
-        imageUrl: ''
-    });
-
+    const navigate = useNavigate()
+    const { createNewProduct, product, setProduct } = useContext(ProductContext)
     const [currentPage, setCurrentPage] = useState("form");
 
     const submitHandler = async (e) => {
@@ -30,8 +22,13 @@ export const NewProduct = () => {
             name: '',
             category: '',
             price: 0,
+            discountPercentage: 0,
+            discountedPrice: 0,
             imageUrl: ''
         })
+
+        //go back to dashboard after creating a new product
+        goBack();
     }
 
     const handleChange = (e) => {
@@ -52,22 +49,18 @@ export const NewProduct = () => {
         setCurrentPage(page)
     }
 
+    const goBack = () => {
+        navigate(-1)
+    }
+
     return (
         <div className='new-product container'>
+            <button className='admin-goBack-btn' onClick={goBack}>Go Back</button>
             <div className='form-container container'>
-
                 <div className='form-nav container'>
                     <button className='active' onClick={(e) => activeLinkHandler(e, "form")}>Create Product</button>
                     <button onClick={(e) => activeLinkHandler(e, "prev")}>Preview Product</button>
                 </div>
-                {/* message */}
-                {message && (
-                    <div className="message">
-                        <p>{message}</p>
-                    </div>
-                )}
-
-
                 {currentPage === "form" ? (<ProductForm product={product} submitHandler={submitHandler} handleChange={handleChange} />) : (<ProductPrev product={product} />)}
             </div>
         </div>

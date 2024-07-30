@@ -2,7 +2,7 @@ import React from 'react'
 
 
 import 'boxicons'
-import './newproduct.css'
+import './productForm.css'
 
 export const ProductForm = (props) => {
     const { product, handleChange, submitHandler } = props

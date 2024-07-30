@@ -13,14 +13,11 @@ export const ProductList = (props) => {
     const [isAdding, setIsAdding] = useState(false)
     const [isAdded, setIsAdded] = useState(false)
 
-
-    const price = product.price.toFixed(2)
-
-
     return (
         <>
             <div className="card" key={product.id} >
-                <div className='card-img' >
+                <div className='card-img'>
+                    {product.discountPercentage > 0 && <label className='discount-tag'>{product.discountPercentage}%</label>}
                     <img src={product.imageUrl} alt={product.name} />
                     <button onClick={() => handleAddToCart(product)} className='buy-icon'>
                         <box-icon color="#fff" name='plus'></box-icon>
@@ -41,7 +38,13 @@ export const ProductList = (props) => {
                 </div>
                 <div className='card-text' onClick={toggleProdDesc}>
                     <h3 className='card-title'>{product.name}</h3>
-                    <p className='card-price'>${price}</p>
+                    <p className='card-price'>
+                        {product.discountPercentage > 0 ?
+                            <label className='discounted-price'><span className='regular-price'>${product.price.toFixed(2)}</span>${product.discountedPrice.toFixed(2)}</label>
+                            :
+                            <label>${product.price.toFixed(2)}</label>
+                        }
+                    </p>
                 </div>
             </div>
             {showProdDesc && (

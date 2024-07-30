@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { getAllCartItems, postAddToCart, deleteAllCartItems, updateCartItemAmount } from '../api/cartItem'
 import { AuthContext } from './authContext'
 
@@ -6,16 +7,15 @@ import { AuthContext } from './authContext'
 export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
-    const { userId } = useContext(AuthContext)
+    const { userId, user, password } = useContext(AuthContext)
     const [cartItems, setCartItems] = useState([])
     const [isAddCart, setIsAddCart] = useState(false)
     const [cartMsg, setCartMsg] = useState('')
 
+
     useEffect(() => {
         fetchCart()
-
     }, [])
-
 
 
     //cart items
@@ -26,7 +26,12 @@ export const CartProvider = ({ children }) => {
         let subTotal = 0
         for (const item of cartItems) {
             totalItems += item.amount
-            subTotal += item.price * item.amount
+            if (item.discountedPrice > 0) {
+                subTotal += item.discountedPrice * item.amount
+            } else {
+                subTotal += item.price * item.amount
+            }
+
         }
 
         subTotal = subTotal.toFixed(2)
@@ -36,7 +41,7 @@ export const CartProvider = ({ children }) => {
     // + 1 cart item
     const addItemAmount = async (id, amount) => {
         try {
-            await updateCartItemAmount(id, amount + 1);
+            await updateCartItemAmount(id, amount + 1, user, password);
             fetchCart()
         } catch (err) {
             console.error('error adding an item')
@@ -47,7 +52,7 @@ export const CartProvider = ({ children }) => {
     // - 1 cart item
     const decreItemAmount = async (id, amount) => {
         try {
-            await updateCartItemAmount(id, amount - 1);
+            await updateCartItemAmount(id, amount - 1, user, password);
             fetchCart()
         } catch (err) {
             console.error('error adding an item')
@@ -57,7 +62,7 @@ export const CartProvider = ({ children }) => {
     // custom amount cart item
     const updateItemAmount = async (id, amount) => {
         try {
-            await updateCartItemAmount(id, amount);
+            await updateCartItemAmount(id, amount, user, password);
             fetchCart()
         } catch (err) {
             console.error('error adding an item')
@@ -67,7 +72,7 @@ export const CartProvider = ({ children }) => {
     const fetchCart = async () => {
         setIsAddCart(true)
         try {
-            const data = await getAllCartItems(userId);
+            const data = await getAllCartItems(userId, user, password);
             getTotalCart()
             setCartItems(data);
 
@@ -82,12 +87,12 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = async (cartItem) => {
         setIsAddCart(true)
-        console.log(isAddCart)
         try {
-            await postAddToCart(cartItem, userId);
-            // setCartMsg(data); added to cart msg
-            fetchCart()
-            console.log(`${cartItem.name} is successfully saved ${isAddCart}`)
+            const isSuccess = await postAddToCart(cartItem, userId, user, password);
+            if (isSuccess) {
+                toast.info(`${cartItem.name} was added to cart`)
+                fetchCart()
+            }
 
         } catch (err) {
             console.error('Error adding item to cart', err);
@@ -96,17 +101,16 @@ export const CartProvider = ({ children }) => {
 
 
     const clearCartItems = async () => {
-        setCartMsg("")
         try {
-            const res = await deleteAllCartItems(userId);
-            const msg = res.response.data;
+            const isSuccess = await deleteAllCartItems(userId, user, password);
             setCartItems([]);
-            if (msg) {
-                setCartMsg(msg);
-                console.log(msg);
+            if (isSuccess) {
+                toast.success("Clear Cart Items")
+            } else {
+                toast.error("Cart Is Already Empty")
             }
         } catch (err) {
-            setCartMsg("Cart Cleared");
+            toast.error("Error clearing the cart")
         }
     }
 

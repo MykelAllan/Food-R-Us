@@ -1,0 +1,60 @@
+/* delete confirmation */
+.delete-confirmation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+}
+
+.delete-confirmation-content {
+    display: grid;
+    place-items: center;
+    width: 30%;
+    max-width: 450px;
+    height: 30%;
+    background-color: #fff;
+    border: 2px solid #e74c3c;
+}
+
+.delete-confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+
+.delete-confirmation-buttons button {
+    width: 40%;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 900;
+
+}
+
+.delete-confirmation-buttons button:first-child {
+    background-color: #e74c3c;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.delete-confirmation-buttons button:nth-child(2) {
+    background-color: #fff;
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.delete-confirmation-buttons button:hover {
+    transform: scale(1.02);
+}

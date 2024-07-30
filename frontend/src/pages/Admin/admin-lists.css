@@ -1,13 +1,27 @@
 /* admin table styles*/
+
 .admin-lists-content {
     width: 50rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.admin-create-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 0.3rem;
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .admin-lists-table {
-    width: 100%;
+    width: 50rem;
+
     border: 2px solid #000;
 }
 
@@ -37,15 +51,21 @@
 
 }
 
+
 .admin-icons.update {
     background-color: rgb(162, 162, 49);
     border-radius: 0.2rem;
 
 }
 
+.admin-create-button:hover {
+    transform: scale(1.02);
+}
+
 .admin-icons:hover {
     transform: scale(1.05);
 }
+
 
 
 
@@ -55,3 +75,5 @@
     width: 3.2rem;
     aspect-ratio: 1;
 }
+
+

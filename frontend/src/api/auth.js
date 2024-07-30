@@ -23,6 +23,21 @@ export const loginUser = async (username, password) => {
     }
 }
 
+export const registerNewUser = async (newUser) => {
+    try {
+        const result = await axios.post(`${BASE_URL}/auth/register`, JSON.stringify(newUser), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(result)
+        return { success: true, result }
+    } catch (error) {
+        console.error('Registration error:', error.response.data);
+        return { success: false, error }
+    }
+}
+
 //get role by user
 export const getUserRole = async (username) => {
     try {
@@ -42,18 +57,3 @@ export const getUserId = async (username) => {
     }
 }
 
-export const registerNewUser = async (newUser) => {
-    try {
-        const response = await axios.post(`${BASE_URL}/auth/register`, JSON.stringify(newUser), {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        console.log('Registration successful:', response.data);
-        // Handle successful registration, e.g., show a success message or redirect
-    } catch (error) {
-        console.error('Registration error:', error.response.data);
-        // Handle registration error, e.g., show an error message
-    }
-}

@@ -1,34 +1,28 @@
-import React, {useState} from 'react'
+import React from 'react';
 
-import './filter.css'
+const CategoryButtons = (props) => {
+    const { changeHandler, categories, selectedCategory } = props.data;
 
-const categories = [
-    { id: 1, name: 'All', filter: '' },
-    { id: 2, name: 'Fruits', filter: 'fruit' },
-    { id: 3, name: 'Vegetables', filter: 'vegetable' },
-    { id: 4, name: 'Dairy', filter: 'dairy' },
-];
-
-export const CategoryButtons = (props) => {
-    const { filterHandler, defaultFilterProducts } = props.data
-    const [selectedFilter, setSelectedFilter] = useState('');//default filter - all
-
-    const changeHandler = (filter) => {
-        setSelectedFilter(filter);
-        filterHandler(filter);
+    const handleCategoryChange = (category) => {
+        changeHandler(category, null, null, null);
     };
 
     return (
         <div className="filter-category-content">
             {categories.map(category => (
-                <div key={category.name} className='filter-category'>
-                    <input type='radio' id={`${category.id}`} name='category'
-                        checked={selectedFilter === category.filter}
-                        onChange={() => changeHandler(category.filter)}
+                <div key={category.id} className='filter-category'>
+                    <input
+                        type='radio'
+                        id={`${category.id}`}
+                        name='category'
+                        checked={selectedCategory === category.filter}
+                        onChange={() => handleCategoryChange(category.filter)}
                     />
                     <label htmlFor={`${category.id}`}>{category.name}</label>
                 </div>
             ))}
         </div>
-    )
+    );
 }
+
+export { CategoryButtons };
