@@ -3,7 +3,7 @@ import { CartContext } from '../../context/cartContext'
 
 
 export const CartCheckout = () => {
-    const { clearCartItems, fetchCart, getTotalCart } = useContext(CartContext)
+    const { clearCartItems, fetchCart, getTotalCart, isFreeShipping } = useContext(CartContext)
 
     const total = getTotalCart()
 
@@ -23,6 +23,8 @@ export const CartCheckout = () => {
             <div className='cart-total-info'>
                 <h1>Total Items: <span>{total.totalItems}</span></h1>
                 <h1>Subtotal: <span>${total.subTotal}</span></h1>
+                <h1 className='cart-shipping-info'>Shipping: <span>{isFreeShipping ? 'Free': (total.totalItems > 0 ? '$1.50' : '$0.00' )}</span></h1>
+
             </div>
             <div className='cart-total-btn'>
                 <button className='cart-checkout'>Checkout</button>

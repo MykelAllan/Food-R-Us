@@ -2,8 +2,8 @@ import React from 'react';
 
 export const Alert = () => {
   const style = {
-    backgroundColor: '#E6E6CC', // Example style
-    color: '#000', // Example style
+    backgroundColor: '#E6E6CC',
+    color: '#000', 
     letterSpacing: '2px',
     fontWeight: 600,
     paddingBlock: '8px',

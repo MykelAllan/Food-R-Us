@@ -17,35 +17,40 @@ export const AdminProducts = (props) => {
         <div className='admin-lists-content'>
             <button onClick={() => navigate('/admin/add-product')} className='admin-create-button'>Add New Product</button>
             <table className='admin-lists-table'>
-                <tr className='admin-lists-header'>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Actions</th>
-                </tr>
-                {isProdFetch ? (
-                    <div className='fetching-products'>
-                        <FallingLines
-                            color="#1f4b2c"
-                            width="100"
-                            visible={isProdFetch}
-                            ariaLabel="falling-circles-loading"
-                        />
-                        <h1>Fetching For Products</h1>
-                    </div>
-                ) : (
-                    paginatedProducts && paginatedProducts.length > 0 ? (
-                        paginatedProducts.map((product) => (
-                            <AdminProductList
-                                key={product.id}
-                                data={{ product, deleteAProduct }}
+                <thead>
+                    <tr className='admin-lists-header'>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {isProdFetch ? (
+                        <div className='fetching-products'>
+                            <FallingLines
+                                color="#1f4b2c"
+                                width="100"
+                                visible={isProdFetch}
+                                ariaLabel="falling-circles-loading"
                             />
-                        ))
+                            <h1>Fetching For Products</h1>
+                        </div>
                     ) : (
-                        <h2>No products available</h2>
-                    )
-                )}
+                        paginatedProducts && paginatedProducts.length > 0 ? (
+                            paginatedProducts.map((product) => (
+                                <AdminProductList
+                                    key={product.id}
+                                    data={{ product, deleteAProduct }}
+                                />
+                            ))
+                        ) : (
+                            <h2>No products available</h2>
+                        )
+                    )}
+                </tbody>
             </table>
 
 

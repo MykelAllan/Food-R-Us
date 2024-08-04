@@ -22,6 +22,7 @@ export const Filter = () => {
     const { filterHandler } = useContext(ProductContext);
     const [selectedCategory, setSelectedCategory] = useState('');//default filter value - all
     const [selectedPrice, setSelectedPrice] = useState({ min: null, max: null, name: 'All' });//default filter value - all
+    const [isMobileFilVisible, setMobileFilVisible] = useState(false)
 
     const changeHandler = (category, minPrice, maxPrice, priceSelected) => {
         const newCategory = category !== null ? category : selectedCategory;
@@ -33,17 +34,57 @@ export const Filter = () => {
         filterHandler(newCategory, newPrice.min, newPrice.max);
     };
 
+    //toggle mobile filter
+    const toggleMobileFilter = () => {
+        const mobileFilter = document.getElementById('mobile-filter')
+        const mobileFilOverlay = document.getElementById('filter-mobile-overlay')
+
+        if (isMobileFilVisible) {
+            mobileFilter.classList.add('active')
+            mobileFilOverlay.classList.add('active')
+            mobileFilOverlay.style.display = 'block'
+            setMobileFilVisible(!isMobileFilVisible)
+        } else {
+            mobileFilter.classList.remove('active')
+            mobileFilOverlay.classList.remove('active')
+            mobileFilOverlay.style.display = 'none'
+            setMobileFilVisible(!isMobileFilVisible)
+        }
+
+
+
+    }
+
     return (
         <div className='filter-container'>
-            <h2 className='filter-title'>Filter Products</h2>
-            <div className="filter-category-container">
-                <h3>Category</h3>
-                <CategoryButtons data={{ changeHandler, categories, selectedCategory }} />
+            <div className='filter-toggle-open-btn' onClick={toggleMobileFilter}>
+                <h2>Filter</h2>
+                <div className='filter-open-btn' >
+                    <box-icon size='md' name='filter'></box-icon>
+                </div>
             </div>
-            <div className="filter-price-container">
-                <h3>Price</h3>
-                <PriceButtons data={{ changeHandler, prices, selectedPrice }} />
+
+
+            <div className='filter-all-container' id='mobile-filter'>
+                <div className='filter-toggle-close-btn'>
+                    <h2 className='filter-title'>Filter Products</h2>
+                    <div className='filter-close-btn' onClick={toggleMobileFilter}>
+                        <box-icon size='md' name='x'></box-icon>
+                    </div>
+                </div>
+
+                <div className="filter-category-container">
+                    <h3>Category</h3>
+                    <CategoryButtons data={{ changeHandler, categories, selectedCategory }} />
+                </div>
+                <div className="filter-price-container">
+                    <h3>Price</h3>
+                    <PriceButtons data={{ changeHandler, prices, selectedPrice }} />
+                </div>
             </div>
+            <div className='filter-mobile-overlay' id='filter-mobile-overlay' onClick={toggleMobileFilter}></div>
+
+
         </div>
     );
 }

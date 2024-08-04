@@ -35,8 +35,6 @@ export const MainApp = () => {
             navigate(`/shop/search/${productName}`)
         }
     }
-
-
     return (
         <div className="App">
 
@@ -44,7 +42,7 @@ export const MainApp = () => {
                 <Route element={<WithNavbar searchProductHandler={searchProductHandler} isLoggedIn={isLoggedIn} />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/shop" element={<Shop />} />
-                    <Route path="/shop/search/:product" element={<Shop />} />
+                    <Route path="/shop/search/:productName" element={<Shop />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/myaccount" element={<MyAccount />} />
                 </Route>
@@ -54,10 +52,20 @@ export const MainApp = () => {
                 <Route path="/admin/dashboard" element={<Dashboard />} />
                 <Route path="/admin/add-product" element={<NewProduct />} />
                 <Route path="/admin/update-product/:productId" element={<UpdateProduct />} />
+                <Route path="/*" element={<PageNotFound />} />
             </Routes>
 
         </div>
     )
+}
+
+const PageNotFound = () => {
+    return (
+        <>
+            <h1>Error 404 Page Not Found</h1>
+        </>
+    )
+
 }
 
 const WithNavbar = ({ isLoggedIn, searchProductHandler }) => (

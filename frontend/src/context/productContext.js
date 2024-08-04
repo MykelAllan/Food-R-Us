@@ -3,6 +3,8 @@ import { toast } from 'react-toastify'
 
 import {
     getAllProducts,
+    getProductsByName,
+    getDiscountedProducts,
     getPaginatedProducts, // for admin
     getProductsByCategAndPrice,
     getProductsByPrice,
@@ -20,12 +22,15 @@ export const ProductContext = createContext()
 export const ProductsProvider = ({ children }) => {
     const { user, password } = useContext(AuthContext)
     const [products, setProducts] = useState([])
+    const [discountedProds, setDiscountedProds] = useState([])
     const [category, setCategory] = useState('')
     const [priceRange, setPriceRange] = useState({ min: 0, max: 0 })
     const [isProdFetch, setIsProdFetch] = useState(false)
     const [paginatedProducts, setPaginatedProducts] = useState([])
     const [totalPaginatedPages, setTotalPaginatedPages] = useState(0)
     const [totalProductItems, setTotalProductItems] = useState(0)
+
+    const [isLoaded, setLoaded] = useState(false)
 
 
     //product model
@@ -43,7 +48,7 @@ export const ProductsProvider = ({ children }) => {
         fetchProducts()
     }, [])
 
-    //products
+    //fetch all products
     const fetchProducts = async () => {
         setIsProdFetch(true)
         try {
@@ -57,6 +62,57 @@ export const ProductsProvider = ({ children }) => {
             setIsProdFetch(false)
         }
     };
+    //fetch all products that are discounted
+    const fetchDiscountedProducts = async () => {
+        const toastMessage = `Loading more content...\n(Might take 1min to load)`;
+        let loadingContent;
+        if (!isLoaded) {
+            loadingContent = toast.loading(toastMessage, {
+                style: { whiteSpace: 'pre-wrap' }
+            });
+        }
+        setIsProdFetch(true)
+        try {
+            const data = await getDiscountedProducts();
+            if (!isLoaded) {
+                setLoaded(true)
+                toast.update(loadingContent, {
+                    render: 'Done',
+                    type: 'success',
+                    isLoading: false,
+                    autoClose: 1000,
+                });
+            }
+
+            setDiscountedProds(data)
+        } catch (err) {
+            console.error('Error fetching products:', err);
+            setDiscountedProds([]);
+            toast.update(loadingContent, {
+                render: 'Error fetching products',
+                type: 'error',
+                isLoading: false,
+                autoClose: 2000,
+            });
+        } finally {
+            setIsProdFetch(false)
+        }
+    };
+
+    //fetch products by name
+    const fetchProductsByName = async (productName) => {
+        setIsProdFetch(true)
+        try {
+            const data = await getProductsByName(productName);
+            setProducts(data);
+        } catch (err) {
+            console.error('Error fetching products:', err);
+            setProducts([]);
+        } finally {
+            setIsProdFetch(false)
+        }
+    };
+
 
     const filterHandler = async (category, minPrice, maxPrice) => {
         setIsProdFetch(true)
@@ -173,7 +229,8 @@ export const ProductsProvider = ({ children }) => {
 
 
     const contextValue = {
-        product,
+        product, //product model for creating new products
+        discountedProds,
         products,
         category,
         priceRange,
@@ -184,6 +241,8 @@ export const ProductsProvider = ({ children }) => {
         setProduct,
         isProdFetch,
         fetchProducts,
+        fetchProductsByName,
+        fetchDiscountedProducts,
         fetchPaginatedProducts,
         filterHandler,
         createNewProduct,

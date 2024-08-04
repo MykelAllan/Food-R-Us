@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { toast } from 'react-toastify';
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
@@ -8,6 +7,31 @@ const BASE_URL = process.env.REACT_APP_API_BASE_URL
 export const getAllProducts = async () => {
     try {
         const res = await axios.get(`${BASE_URL}/api/products`);
+        return res.data;
+    } catch (err) {
+        console.error('error fetching products')
+        return []
+    }
+}
+
+//gets the products that are discounted
+export const getDiscountedProducts = async () => {
+    try {
+        const res = await axios.get(`${BASE_URL}/api/products/discounted`);
+        return res.data;
+    } catch (err) {
+        console.error('error fetching products')
+        return []
+    }
+}
+
+//gets the products by name
+export const getProductsByName = async (productName) => {
+    try {
+        const res = await axios.get(`${BASE_URL}/api/products/by-name`, {
+            params: { name: productName }
+
+        });
         return res.data;
     } catch (err) {
         console.error('error fetching products')
@@ -68,7 +92,7 @@ export const getPaginatedProducts = async (pageNo, user, password) => {
         return res.data;
     } catch (err) {
         console.error(`error fetching products `)
-       return []
+        return []
     }
 }
 

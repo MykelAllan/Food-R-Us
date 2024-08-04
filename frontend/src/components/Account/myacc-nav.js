@@ -1,71 +1,44 @@
 import React from 'react'
 import { IoLocationOutline } from "react-icons/io5";
 
+const links = [
+  { page: 'myorders', icon: 'notepad', label: 'My Orders' },
+  { page: 'wishlist', icon: 'heart', label: 'Wishlist' },
+  { page: 'address', icon: <IoLocationOutline size="1.6em" />, label: 'Address' },
+  { page: 'accountinfo', icon: 'user', label: 'Account Info' },
+  { page: 'changepassword', icon: 'lock-alt', label: 'Change Password' },
+  { page: 'signout', icon: 'log-out-circle', label: 'Sign Out' },
+];
+
 export const Navigation = (props) => {
-  const { navigate, logOutUser, currentPage, setCurrentPage } = props.data
-  const { } = props.data
+  const { currentPage, setCurrentPage, togglePage } = props.data;
 
   const activeLinkHandler = (e, page) => {
-    console.log(currentPage)
-    //removes active class
     document.querySelectorAll('.myacc-nav-link').forEach(button => {
       button.classList.remove('active');
-    })
-
-    //adds the active class
+    });
     e.target.closest('.myacc-nav-link').classList.add('active');
-
-    //sets current page
-    setCurrentPage(page)
-  }
-
-
+    setCurrentPage(page);
+  };
 
   return (
     <div className='myacc-nav-container'>
       <div className='myacc-title'><h1>My Account</h1></div>
-      <div className='myacc-nav-link active' onClick={(e) => activeLinkHandler(e, 'myorders')}>
-        <div className='myacc-nav-link-icon'>
-          <box-icon name='notepad'></box-icon>
+      {links.map(link => (
+        <div
+          key={link.page}
+          className={`myacc-nav-link ${currentPage === link.page ? 'active' : ''}`}
+          onClick={(e) => activeLinkHandler(e, link.page)}
+        >
+          <div className='myacc-nav-link-icon'>
+            {typeof link.icon === 'string' ? <box-icon name={link.icon}></box-icon> : link.icon}
+          </div>
+          <button onClick={togglePage}>{link.label}</button>
+          <div className='myacc-nav-link-icon arrow'>
+            <box-icon name='chevron-right'></box-icon>
+          </div>
         </div>
-        <button >My Orders</button>
-      </div>
-      <div className='myacc-nav-link' onClick={(e) => activeLinkHandler(e, 'wishlist')}>
-        <div className='myacc-nav-link-icon'>
-          <box-icon name='heart'></box-icon>
-        </div>
-        <button>Wishlist</button>
-      </div>
-
-      <div className='myacc-nav-link' onClick={(e) => activeLinkHandler(e, 'address')}>
-        <div className='myacc-nav-link-icon'>
-          <IoLocationOutline size="1.6em" />
-
-        </div>
-        <button>Address</button>
-      </div>
-      <div className='myacc-nav-link' onClick={(e) => activeLinkHandler(e, 'accountinfo')}>
-        <div className='myacc-nav-link-icon'>
-          <box-icon name='user' ></box-icon>
-        </div>
-        <button>Account Info</button>
-      </div>
-      <div className='myacc-nav-link' onClick={(e) => activeLinkHandler(e, 'changepassword')}>
-        <div className='myacc-nav-link-icon'>
-          <box-icon name='lock-alt'></box-icon>
-        </div>
-        <button>Change Password</button>
-      </div>
-      <div className='myacc-nav-link' onClick={(e) => activeLinkHandler(e, 'signout')}>
-        <div className='myacc-nav-link-icon'>
-          <box-icon name='log-out-circle'></box-icon>
-        </div>
-        <button>Sign Out</button>
-       
-      </div>
-      
+      ))}
     </div>
-  )
-}
-
-
+  );
+};

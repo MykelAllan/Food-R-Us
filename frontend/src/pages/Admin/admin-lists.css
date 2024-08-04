@@ -1,7 +1,8 @@
 /* admin table styles*/
-
+#text {
+    text-transform: capitalize;
+}
 .admin-lists-content {
-    width: 50rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +22,6 @@
 
 .admin-lists-table {
     width: 50rem;
-
     border: 2px solid #000;
 }
 
@@ -77,3 +77,95 @@
 }
 
 
+@media screen and (max-width: 860px) {
+    .admin-lists-content {
+        width: 40rem;
+        margin-inline: 2rem;
+    }
+
+    .admin-lists-table {
+        border: 0;
+        width: 100%;
+    }
+
+    .admin-lists {
+        border: 2px solid #000;
+        padding: 1.5rem;
+        font-weight: 600;
+
+    }
+
+    .admin-lists td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+        text-transform: capitalize;
+        padding: 0.5rem;
+    }
+    .admin-list-price-tag .discount-tag {
+        right: 3rem;
+        
+    }
+    .admin-actions-icons {
+        justify-content: end;
+    }
+
+    .admin-lists-table caption {
+        font-size: 1.3em;
+    }
+
+    .admin-lists-table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+
+    table td::before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .admin-lists-content {
+        width: 30rem;
+    }
+}
+@media screen and (max-width: 575px) {
+    .fetching-products {
+        left: 28%;
+    }
+    .admin-lists-content {
+        width: 20rem;
+    }
+}
+@media screen and (max-width: 425px) {
+    .admin-lists-content {
+        width: 100%;
+        margin-inline: 0;
+       
+    }
+}

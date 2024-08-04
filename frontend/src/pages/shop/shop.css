@@ -14,3 +14,23 @@
     gap: 2rem;
     height: 100%;
 }
+
+
+/* small screen */
+@media screen and (max-width: 890px) {
+    .shop-content {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .shop-container {
+        padding: 2rem 1.5rem
+    }
+    
+}
+
+@media screen and (max-width: 345px) {
+    .shop-container {
+        margin-inline: 0.5rem;
+    }
+}

@@ -10,32 +10,39 @@ export const AdminProductList = (props) => {
     const navigateToUpdate = () => {
         navigate(`/admin/update-product/${product.id}`)
     }
+
+    //used for mobile to capitalize name & category
+    const capFirstHandler = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
     return (
+
         <tr className='admin-lists'>
-            <th>{product.name}</th>
-            <th>{product.category}</th>
-            <th>
+            <td data-label='Name' scope='row'>{capFirstHandler(product.name)}</td>
+            <td data-label='Category'>{capFirstHandler(product.category)}</td>
+            <td data-label='Price'>
                 {product.discountPercentage > 0 ?
                     <label className='discounted-price'><span className='regular-price'>${product.price.toFixed(2)}</span>${product.discountedPrice.toFixed(2)}</label>
                     :
                     <label>${product.price.toFixed(2)}</label>
                 }
 
-            </th>
-            <th className='admin-list-price-tag'>
+            </td>
+            <td data-label='Image' className='admin-list-price-tag'>
                 {product.discountPercentage > 0 && <label className='discount-tag'>{product.discountPercentage.toFixed(2)}%</label>}
                 <img src={product.imageUrl} />
-
-            </th>
-            <th>
+            </td>
+            <td data-label='Actions'>
                 <div className='admin-actions-icons'>
                     <div onClick={() => setShowConfirmation(true)} className='admin-icons delete'><box-icon color='#fff' name='trash' type='solid' ></box-icon></div>
                     <div onClick={navigateToUpdate} className='admin-icons update'><box-icon color='#fff' name='edit' type='solid' ></box-icon></div>
                 </div>
 
                 {showConfirmation && <DeleteConfirmation deleteAProduct={deleteAProduct} productId={product.id} setShowConfirmation={setShowConfirmation} />}
-            </th>
+            </td>
         </tr >
+
+
     )
 }
 

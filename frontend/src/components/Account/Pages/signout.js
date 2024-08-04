@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './myacc-pages.css'
 
 export const Signout = (props) => {
-    const { navigate, logOutUser } = props.data
+    const { navigate, logOutUser, togglePage } = props.data
     const [showConfirmation, setShowConfirmation] = useState(false)
 
     const signOutHandler = () => [
@@ -11,15 +11,22 @@ export const Signout = (props) => {
     ]
 
     return (
-        <div className='signout-content'>
-            <h2>Sign Out?</h2>
-            <button onClick={() => setShowConfirmation(true)}>Sign Out</button>
-            {showConfirmation &&
-                (
-                    <Confirmation signOutHandler={signOutHandler} setShowConfirmation={setShowConfirmation} />
-                )}
-        </div>
+        <div className='myacc-page-content signout-content'>
+            <div className='page-content-title'>
+                <div className='dashboard-back-icon' style={{ '--desc': '"Go Back"' }} onClick={togglePage}>
+                    <box-icon color='#fff' name='chevron-left' ></box-icon>
+                </div>
+                <h2>Sign Out?</h2>
+                <div className='page-content-body'>
+                    <button onClick={() => setShowConfirmation(true)}>Sign Out</button>
+                    {showConfirmation &&
+                        (
+                            <Confirmation signOutHandler={signOutHandler} setShowConfirmation={setShowConfirmation} />
+                        )}
+                </div>
 
+            </div>
+        </div>
     )
 }
 

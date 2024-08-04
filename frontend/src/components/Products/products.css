@@ -28,7 +28,8 @@
     grid-template-columns: repeat(5, 2fr);
     gap: 4rem;
     width: 100%;
-    
+    padding-block-end: 1.2rem;
+
 }
 
 .card {
@@ -38,6 +39,7 @@
     justify-content: start;
     gap: 1rem;
     cursor: pointer;
+
 }
 
 .card .card-img {
@@ -127,6 +129,7 @@
         grid-template-columns: repeat(5, 2fr);
     }
 }
+
 @media screen and (max-width: 1690px) {
     .cards {
         grid-template-columns: repeat(4, 2fr);
@@ -139,6 +142,7 @@
         grid-template-columns: repeat(3, 2fr);
     }
 }
+
 @media only screen and (max-width: 1160px) {
     .cards {
         grid-template-columns: repeat(2, 2fr);
@@ -147,3 +151,28 @@
 }
 
 
+/* small screen*/
+
+@media screen and (max-width: 563px) {
+    .cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        padding-block-end: 1.5rem;
+        position: relative;
+    }
+
+    .card .card-img {
+        position: unset;
+    }
+
+    .card .card-img .buy-icon {
+        left: 70%;
+        bottom: 15%;
+    }
+
+}

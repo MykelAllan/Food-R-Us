@@ -11,6 +11,7 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([])
     const [isAddCart, setIsAddCart] = useState(false)
     const [cartMsg, setCartMsg] = useState('')
+    const [isFreeShipping, setFreeShipping] = useState(false)
 
 
     useEffect(() => {
@@ -26,15 +27,19 @@ export const CartProvider = ({ children }) => {
         let subTotal = 0
         for (const item of cartItems) {
             totalItems += item.amount
-            if (item.discountedPrice > 0) {
+            if (item.discountedPrice > 0) { //checks if product is on discount, if so it gets the discountPrice
                 subTotal += item.discountedPrice * item.amount
             } else {
                 subTotal += item.price * item.amount
             }
-
         }
 
         subTotal = subTotal.toFixed(2)
+        if (subTotal >= 25) { //checks if subtotal is >= 25, give free shipping
+            setFreeShipping(true)
+        } else {
+            setFreeShipping(false)
+        }
         return { totalItems, subTotal }
     }
 
@@ -115,7 +120,7 @@ export const CartProvider = ({ children }) => {
     }
 
     const contextValue = {
-        cartItems, cartMsg, isAddCart,
+        cartItems, cartMsg, isAddCart, isFreeShipping,
         fetchCart, addToCart, clearCartItems, getTotalCart,
         addItemAmount, decreItemAmount, updateItemAmount,
 

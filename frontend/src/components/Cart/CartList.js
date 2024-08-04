@@ -8,8 +8,10 @@ import { CartContext } from '../../context/cartContext'
 
 
 export const CartList = () => {
-    const { cartItems, fetchCart, addItemAmount, decreItemAmount, updateItemAmount, } = useContext(CartContext)
+    const { cartItems, fetchCart, addItemAmount, decreItemAmount, updateItemAmount, getTotalCart } = useContext(CartContext)
     const [itemAmounts, setItemAmounts] = useState({})
+
+    const total = getTotalCart()
 
     const onBlurHandler = (item, value) => {
         const amount = parseInt(value, 10);
@@ -24,10 +26,22 @@ export const CartList = () => {
         setItemAmounts(updatedAmounts);
     };
 
+    // checks if items is zero
+    const carItemAmount = () => {
+        const cartItemContainer = document.getElementById('cart-items')
+        if (total.totalItems === 0) {
+            cartItemContainer.classList.add('active')
+        } else {
+            cartItemContainer.classList.remove('active')
+        }
+    }
+
 
     useEffect(() => {
         fetchCart()
-    }, [])
+        carItemAmount()
+
+    }, [total.totalItems])
 
     useEffect(() => {
         const initialAmounts = {};
@@ -41,14 +55,14 @@ export const CartList = () => {
         <div className="cart-container">
             <div className='cart-box'>
                 {cartItems.length === 0 ? (
-                    <div className='cart-items'>
+                    <div className='cart-items' id='cart-items'>
                         <div className='cart-empty'>
                             <p>Cart Empty</p>
                             <img src={emptyCart} loading='lazy' />
                         </div>
                     </div>
                 ) : (
-                    <div className='cart-items'>
+                    <div className='cart-items' id='cart-items'>
                         {cartItems.map((item) => (
                             <div className='cart-item' key={item.id}>
                                 <div className='cart-item-img'>

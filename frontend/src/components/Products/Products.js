@@ -12,10 +12,11 @@ import { AuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 
 
-export const Products = () => {
+export const Products = ({ productName }) => {
     const { userId, isLoggedIn } = useContext(AuthContext)
     const { addToCart, cartItems, fetchCart } = useContext(CartContext);
-    const { products, category, priceRange, isProdFetch, fetchProducts } = useContext(ProductContext)
+    const { products, category, priceRange, isProdFetch, fetchProducts, fetchProductsByName } = useContext(ProductContext)
+
     const [showProdDesc, setShowProdDesc] = useState(null)
     const navigate = useNavigate()
 
@@ -55,9 +56,15 @@ export const Products = () => {
     }
 
     useEffect(() => {
-        fetchProducts()
+        if (productName !== null && productName !== undefined) {
+            fetchProductsByName(productName)
+            console.log('fetching products for', productName)
+        } else {
+            fetchProducts()
+            console.log('fetching all products')
+        }
         fetchCart()
-    }, [])
+    }, [productName])
     return (
         <div className='products-container'>
             <div className='products-content'>

@@ -9,8 +9,19 @@ import { AuthContext } from '../../context/authContext'
 export const MyAccount = () => {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext)
   const [currentPage, setCurrentPage] = useState('myorders')//default
+  const [isPageVisible, setPageVisible] = useState(false)
   const navigate = useNavigate()
 
+
+  const togglePage = () => {
+    const contentContainer = document.getElementById('myacc-page-container')
+    setPageVisible(!isPageVisible)
+    if (isPageVisible) {
+      contentContainer.classList.add('active')
+    } else {
+      contentContainer.classList.remove('active')
+    }
+  }
 
 
   //navigates to home if user is not logged in
@@ -22,10 +33,9 @@ export const MyAccount = () => {
 
   return (
     <div className='myacc-container'>
-
       <div className='myacc-content'>
-        <Navigation data={{ currentPage, setCurrentPage }} />
-        <MyAccContent data={{ navigate, logOutUser, user, currentPage, setCurrentPage }} />
+        <Navigation data={{ currentPage, setCurrentPage, togglePage }} />
+        <MyAccContent data={{ navigate, logOutUser, user, currentPage, setCurrentPage, togglePage }} />
       </div>
     </div>
   )

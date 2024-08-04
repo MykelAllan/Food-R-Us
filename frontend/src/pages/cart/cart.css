@@ -1,0 +1,10 @@
+@media screen and (max-width: 785px) {
+    .cartItems-body {
+        margin-top: 0;
+        padding: 1rem 3rem;
+    }
+    .cart-items-cont {
+        flex-direction: column;
+    }
+    
+}

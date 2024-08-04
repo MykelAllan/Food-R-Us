@@ -10,8 +10,15 @@ export const HeroLists = ({ heroData }) => {
                     <div className='hero-texts'>
                         <h1 className='hero-title'>{item.title}</h1>
                         <p className='hero-subheading'>{item.subheading}</p>
-                        <p className='hero-price'>{item.price}</p>
-                        <button className='hero-shop-btn' onClick={() => navigate('/shop')}>Shop Now</button>
+                        <div className='hero-price-shop'>
+                            <p className='hero-price'>{item.price}</p>
+                            <button className='hero-shop-btn' onClick={() => navigate('/shop')}>Shop Now</button>
+                        </div>
+                        <div className='hero-price-shop-overlay'>
+                            <p className='hero-price'>{item.price}</p>
+                            <button className='hero-shop-btn' onClick={() => navigate('/shop')}>Shop Now</button>
+                        </div>
+
                     </div>
                     <div className='hero-img'>
                         <img src={item.imgSrc} alt={`Slide ${index + 1}`} loading='lazy' />

@@ -22,7 +22,7 @@ export const Dashboard = () => {
 
     const activeLinkHandler = (e, page) => {
         //removes active class
-        document.querySelectorAll('.dashboard-nav button').forEach(button => {
+        document.querySelectorAll('.dashboard-nav .nav-content .btn').forEach(button => {
             button.classList.remove('active');
         })
 
@@ -46,22 +46,30 @@ export const Dashboard = () => {
                 autoClose: 4000
             })
         } else {
-            fetchPaginatedProducts(1)
+            fetchPaginatedProducts(1) //fetch paginated products page 1
         }
     }, [])
 
     return (
         <div className='dashboard-container'>
             <div className='dashboard-title'>
-                <div className='dashboard-back-icon' style={{ '--desc': '"Go Back"' }} onClick={goBack }>
-                    <box-icon color='#fff'name='chevron-left' ></box-icon>
+                <div className='dashboard-back-icon' style={{ '--desc': '"Go Back"' }} onClick={goBack}>
+                    <box-icon color='#fff' name='chevron-left' ></box-icon>
                 </div>
                 <h1>Admin Dashboard</h1>
             </div>
 
             <div className='dashboard-nav'>
-                <button className='active' onClick={(e) => activeLinkHandler(e, "products")}>Access Products</button>
-                <button onClick={(e) => activeLinkHandler(e, "users")}>Access Users</button>
+                <div className='nav-content' onClick={(e) => activeLinkHandler(e, "products")}>
+                    <div className='nav-icon btn'><box-icon name='food-menu' type='solid' ></box-icon></div>
+                    <button className='btn active'>Access Products</button>
+                </div>
+                <div className='nav-content' onClick={(e) => activeLinkHandler(e, "users")}>
+                    <div className='nav-icon btn'><box-icon type='solid' name='user'></box-icon></div>
+                    <button className='btn'>Access Users</button>
+                </div>
+
+
             </div>
             <div className='dashboard-content'>
                 <div>

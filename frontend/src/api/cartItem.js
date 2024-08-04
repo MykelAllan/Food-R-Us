@@ -22,7 +22,7 @@ export const getAllCartItems = async (userId, user, password) => {
 
 export const postAddToCart = async (cartItem, userId, user, password) => {
     try {
-        const res = await axios.post(`${BASE_URL}/api/cart/add`, { ...cartItem, userId }, {
+        await axios.post(`${BASE_URL}/api/cart/add`, { ...cartItem, userId }, {
             headers: {
                 'Content-Type': 'application/json'
             },
