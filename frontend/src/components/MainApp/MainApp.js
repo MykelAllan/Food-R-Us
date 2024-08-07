@@ -17,6 +17,7 @@ import { NewProduct } from '../../pages/Admin/Products/CreateNewProduct/NewProdu
 import { UpdateProduct } from '../../pages/Admin/Products/UpdateProduct/UpdateProduct';
 import { ProductContext } from '../../context/productContext';
 import { toast } from 'react-toastify';
+import { UpdateOrder } from '../../pages/Admin/Orders/UpdateOrder/UpdateOrder';
 
 export const MainApp = () => {
     const { isLoggedIn } = useContext(AuthContext)
@@ -52,6 +53,7 @@ export const MainApp = () => {
                 <Route path="/admin/dashboard" element={<Dashboard />} />
                 <Route path="/admin/add-product" element={<NewProduct />} />
                 <Route path="/admin/update-product/:productId" element={<UpdateProduct />} />
+                <Route path="/admin/update-order/:orderId" element={<UpdateOrder />} />
                 <Route path="/*" element={<PageNotFound />} />
             </Routes>
 

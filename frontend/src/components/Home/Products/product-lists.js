@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../../../context/cartContext';
 import './home-prods-lists.css'
 
 export const ProductsLists = (props) => {
     const { discountedProds = [] } = props.data;
+    const { handleAddToCart } = useContext(CartContext)
 
     return (
         <div className='pd-cards-container'>
@@ -26,7 +28,7 @@ export const ProductsLists = (props) => {
 
                             </div>
                         </div>
-                        <div className='pd-card-add-to-cart'>
+                        <div className='pd-card-add-to-cart' onClick={() => handleAddToCart(product)}>
                             <box-icon color='#fff' name='cart-add' ></box-icon>
                         </div>
                     </div>

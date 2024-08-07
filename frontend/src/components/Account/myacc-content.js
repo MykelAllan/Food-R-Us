@@ -10,7 +10,7 @@ import { Signout } from './Pages/signout'
 export const MyAccContent = (props) => {
     const { userRole } = useContext(AuthContext)
     const { navigate, user, logOutUser, currentPage, togglePage } = props.data
-    
+
     const adminHandler = () => {
         if (userRole === 'ADMIN') {
             navigate('/admin/dashboard')
@@ -30,7 +30,7 @@ export const MyAccContent = (props) => {
             case "changepassword":
                 return <ChangePassword data={{ togglePage }} />
             case "signout":
-                return <Signout data={{ navigate, logOutUser, togglePage }} />
+                return <Signout data={{ logOutUser, togglePage }} />
         }
     }
 

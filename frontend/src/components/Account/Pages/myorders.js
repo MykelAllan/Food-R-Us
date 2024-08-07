@@ -1,4 +1,5 @@
 import React from 'react'
+import { OrderHistory } from '../SubComponent/MyOrders/OrderHistory'
 
 export const MyOrders = (props) => {
     const { togglePage } = props.data
@@ -11,7 +12,7 @@ export const MyOrders = (props) => {
                 <h1>My Orders</h1>
             </div>
             <div className='page-content-body'>
-
+                <OrderHistory />
             </div>
         </div>
     )

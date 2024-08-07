@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL
+import { getBaseUrl } from './config'
 
-// const BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
+
+const BASE_URL = getBaseUrl()
 
 export const getAllCartItems = async (userId, user, password) => {
     try {
@@ -20,9 +21,9 @@ export const getAllCartItems = async (userId, user, password) => {
     }
 }
 
-export const postAddToCart = async (cartItem, userId, user, password) => {
+export const postAddToCart = async (cartItems, userId, user, password) => {
     try {
-        await axios.post(`${BASE_URL}/api/cart/add`, { ...cartItem, userId }, {
+        await axios.post(`${BASE_URL}/api/cart/add-items`, cartItems, {
             headers: {
                 'Content-Type': 'application/json'
             },

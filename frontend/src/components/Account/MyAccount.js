@@ -9,18 +9,20 @@ import { AuthContext } from '../../context/authContext'
 export const MyAccount = () => {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext)
   const [currentPage, setCurrentPage] = useState('myorders')//default
-  const [isPageVisible, setPageVisible] = useState(false)
+  const [isPageVisible, setPageVisible] = useState(true)
   const navigate = useNavigate()
 
 
   const togglePage = () => {
     const contentContainer = document.getElementById('myacc-page-container')
+
     setPageVisible(!isPageVisible)
     if (isPageVisible) {
       contentContainer.classList.add('active')
     } else {
       contentContainer.classList.remove('active')
     }
+
   }
 
 

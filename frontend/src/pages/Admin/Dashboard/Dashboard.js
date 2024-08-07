@@ -5,12 +5,14 @@ import { AuthContext } from '../../../context/authContext'
 import { ProductContext } from '../../../context/productContext'
 import { Pagination } from '../Pagination/Pagination'
 import { AdminProducts } from '../Products/ProductsList/Products'
-import { AdminUsers } from '../Users/Users'
+import { AdminOrders } from '../Orders/Orders'
 
 import './dashboard.css'
+import { OrderContext } from '../../../context/orderContext'
 
 export const Dashboard = () => {
     const { userRole } = useContext(AuthContext)
+    const { fetchAllOrders, adminOrders } = useContext(OrderContext)
     const { fetchPaginatedProducts, paginatedProducts, totalPaginatedPages, totalProductItems } = useContext(ProductContext)
     const [currentPage, setCurrentPage] = useState('products')
     const navigate = useNavigate()
@@ -47,6 +49,8 @@ export const Dashboard = () => {
             })
         } else {
             fetchPaginatedProducts(1) //fetch paginated products page 1
+            fetchAllOrders()
+
         }
     }, [])
 
@@ -64,9 +68,9 @@ export const Dashboard = () => {
                     <div className='nav-icon btn'><box-icon name='food-menu' type='solid' ></box-icon></div>
                     <button className='btn active'>Access Products</button>
                 </div>
-                <div className='nav-content' onClick={(e) => activeLinkHandler(e, "users")}>
-                    <div className='nav-icon btn'><box-icon type='solid' name='user'></box-icon></div>
-                    <button className='btn'>Access Users</button>
+                <div className='nav-content' onClick={(e) => activeLinkHandler(e, "orders")}>
+                    <div className='nav-icon btn'><box-icon type='solid' name='food-menu'></box-icon></div>
+                    <button className='btn'>Access Orders</button>
                 </div>
 
 
@@ -74,7 +78,7 @@ export const Dashboard = () => {
             <div className='dashboard-content'>
                 <div>
                     <h4>Total Products: {totalProductItems}</h4>
-                    <h4>Total Users: 0</h4>
+                    <h4>Total Orders: {adminOrders.length}</h4>
                 </div>
                 {currentPage === "products" ?
                     <div>
@@ -85,7 +89,7 @@ export const Dashboard = () => {
                         </div>
                     </div>
                     :
-                    (<AdminUsers data={{}} />)}
+                    (<AdminOrders data={{}} />)}
             </div>
 
 

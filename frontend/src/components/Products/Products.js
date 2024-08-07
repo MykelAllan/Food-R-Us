@@ -13,38 +13,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const Products = ({ productName }) => {
-    const { userId, isLoggedIn } = useContext(AuthContext)
-    const { addToCart, cartItems, fetchCart } = useContext(CartContext);
+    const { handleAddToCart, cartItems, fetchCart } = useContext(CartContext);
     const { products, category, priceRange, isProdFetch, fetchProducts, fetchProductsByName } = useContext(ProductContext)
 
     const [showProdDesc, setShowProdDesc] = useState(null)
-    const navigate = useNavigate()
 
     const getCartItemAmount = (productId) => {
         const cartItem = cartItems.find(item => item.productId === productId);
 
         return cartItem ? cartItem.amount : 0;
     }
-
-    const handleAddToCart = (product) => {
-        if (!isLoggedIn) {
-            navigate('/auth/login')
-            toast.info("Sign In to add product to cart", {
-                autoClose: 4000
-            })
-        } else {
-            const newCartItem = {
-                productId: product.id,
-                name: product.name,
-                price: product.price,
-                discountPercentage: product.discountPercentage,
-                discountedPrice: product.discountedPrice,
-                amount: 1,
-                imageUrl: product.imageUrl,
-            };
-            addToCart(newCartItem, userId);
-        }
-    };
 
     const toggleProdDesc = (e, productId) => {
         e.stopPropagation()
