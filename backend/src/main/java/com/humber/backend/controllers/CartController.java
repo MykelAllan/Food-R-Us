@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/cart")
-@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.171:3000/", "https://food-r-us.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.170:3000", "https://food-r-us.vercel.app"})
 public class CartController {
 
     private final CartService cartService;
@@ -26,9 +26,9 @@ public class CartController {
     }
 
     //adds cartitem
-    @PostMapping("/add")
-    public CartItem addCartItem(@RequestBody CartItem cartItem) {
-        return cartService.addCartItem(cartItem);
+    @PostMapping("/add-items")
+    public List<CartItem> addCartItem(@RequestBody List<CartItem> cartItem) {
+        return cartService.addCartItems(cartItem);
     }
 
     //updates cart item amount from checkout

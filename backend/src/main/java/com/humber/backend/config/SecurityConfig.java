@@ -33,7 +33,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/auth/**", "/api/products/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/cart/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/api/cart/**","/api/orders/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 ).csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable) //basic auth form login

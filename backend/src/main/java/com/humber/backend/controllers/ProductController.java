@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.171:3000/", "https://food-r-us.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.170:3000", "https://food-r-us.vercel.app"})
 @RequestMapping("/api/products")
 public class ProductController {
     private final ProductService productService;
@@ -37,7 +37,6 @@ public class ProductController {
     @GetMapping("/by-name")
     public List<Product> getProductsByName(@RequestParam(required = false) String name) {
         return productService.getProductsByName(name);
-
     }
 
 

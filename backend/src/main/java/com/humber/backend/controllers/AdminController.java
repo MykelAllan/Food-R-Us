@@ -1,6 +1,9 @@
 package com.humber.backend.controllers;
 
+import com.humber.backend.models.Order;
 import com.humber.backend.models.Product;
+import com.humber.backend.repositories.OrderRepository;
+import com.humber.backend.services.OrderService;
 import com.humber.backend.services.ProductService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -10,17 +13,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "https://food-r-us.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.170:3000", "https://food-r-us.vercel.app"})
 @RequestMapping("/admin/products")
 public class AdminController {
+
+    private final OrderService orderService;
     //gets pageSize from properties
     @Value("${page.size}")
     private int pageSize;
 
     private final ProductService productService;
 
-    public AdminController(ProductService productService) {
+    public AdminController(ProductService productService, OrderService orderService) {
         this.productService = productService;
+        this.orderService = orderService;
     }
 
     //get products with pagination
@@ -43,6 +49,12 @@ public class AdminController {
     @GetMapping("/{productId}")
     public Optional<Product> getProductById(@PathVariable String productId) {
         return productService.getProductById(productId);
+    }//get product by id
+
+    //get order by id
+    @GetMapping("/order/{orderId}")
+    public Optional<Order> getOrderById(@PathVariable String orderId) {
+        return orderService.getOrderById(orderId);
     }
 
 
@@ -69,4 +81,28 @@ public class AdminController {
         }
         return "error deleting the product";
     }
+
+
+    //updates the status for the orders
+    @PutMapping("/{orderId}/status")
+    public String updateOrderStatus(@PathVariable String orderId, @RequestBody Order newOrder) {
+        int statusCode = orderService.updateOrderStatus(orderId, newOrder);
+
+        if (statusCode == 1) {//if success
+            return "order status successfully updated";
+        }
+        return "error updating order status";
+    }
+
+    //deletes an order
+    @DeleteMapping("/delete-order/{id}")
+    public String deleteOrder(@PathVariable String id) {
+        int statusCode = orderService.deleteOrder(id);
+
+        if (statusCode == 1) {
+            return "order was deleted successfully";
+        }
+        return "error deleting the order";
+    }
+
 }

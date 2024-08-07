@@ -16,16 +16,19 @@ public class CartService {
         this.cartRepository = cartRepository;
     }
 
-    //add
-    public CartItem addCartItem(CartItem cartItem) {
-        CartItem existingItem = cartRepository.findByProductIdAndUserId(cartItem.getProductId(), cartItem.getUserId());
+    //add item to cart | add items to cart
+    public List<CartItem> addCartItems(List<CartItem> cartItems) {
+        for (CartItem cartItem : cartItems) {
+            CartItem existingItem = cartRepository.findByProductIdAndUserId(cartItem.getProductId(), cartItem.getUserId());
 
-        if (existingItem != null) {
-            existingItem.setAmount(existingItem.getAmount() + cartItem.getAmount());
-            return cartRepository.save(existingItem);
-        } else {
-            return cartRepository.save(cartItem);
+            if (existingItem != null) {
+                existingItem.setAmount(existingItem.getAmount() + cartItem.getAmount());
+                cartRepository.save(existingItem);
+            } else {
+                cartRepository.save(cartItem);
+            }
         }
+        return cartItems;
     }
 
     //get cartItem by id
