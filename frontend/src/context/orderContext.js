@@ -97,6 +97,7 @@ export const OrderProvider = ({ children }) => {
                     autoClose: 4000
                 })
                 fetchAllOrders()
+                fetchOrdersByUserId()
             }
         } catch (err) {
             console.error('Error deleting an orde', err);

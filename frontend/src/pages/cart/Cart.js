@@ -1,15 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './cart.css'
 import { CartList } from '../../components/Cart/CartList'
 import { CartCheckout } from '../../components/Cart/CartCheckout'
 import { CartContext } from '../../context/cartContext'
+import { useLocation } from 'react-router-dom'
 
 
 
 export const Cart = () => {
   const { getTotalCart } = useContext(CartContext)
+  const location = useLocation()
+
 
   const total = getTotalCart()
+
+
 
   return (
     <div className='cartItems-body container'>

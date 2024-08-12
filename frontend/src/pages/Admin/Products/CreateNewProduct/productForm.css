@@ -136,6 +136,7 @@
     bottom: -1rem;
     right: 1.5rem;
 }
+
 .form-input.discount input {
     width: 5rem;
 }
@@ -184,8 +185,8 @@
     bottom: 25.5%;
     left: 23%;
     font-weight: 600;
-    border: 2px solid #41ec5a;
-    background-color: #6b9b73;
+    border: none;
+    background-color: #207d2e;
     border-radius: 0.3rem;
     color: #fff;
     padding: 0.7rem;
@@ -195,7 +196,7 @@
 }
 
 .submit-btn:hover {
-    background-color: #237730;
+    background-color: #176423;
 }
 
 /* laptop screen */

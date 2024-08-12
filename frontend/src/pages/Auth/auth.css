@@ -147,3 +147,15 @@ input:-webkit-autofill:active {
 .auth-link a:hover {
     text-decoration: underline;
 }
+
+/* small screen */
+@media screen and (max-width: 522px) {
+    .auth-form {
+        width: unset;
+    }
+}
+@media screen and (max-width: 415px) {
+    .auth-form {
+        border: none;
+    }
+}

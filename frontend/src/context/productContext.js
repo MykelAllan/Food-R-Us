@@ -178,12 +178,14 @@ export const ProductsProvider = ({ children }) => {
 
     //get product by id
     const productById = async (productId) => {
+        setIsProdFetch(true)
         try {
             const newProduct = await getProductById(productId, user, password);
             if (newProduct === null) {
                 toast.error("Error Getting The Product")
             }
             setProduct(newProduct)
+            setIsProdFetch(false)
         } catch (err) {
             toast.error("Error Getting The Product")
             setProduct([])

@@ -33,6 +33,7 @@ export const OrderTable = (props) => {
     const numItems = orderModel.totalProducts
     const shipFee = orderModel.shippingFee.toFixed(2)
     const totalPrice = orderModel.totalPrice.toFixed(2)
+    const orderDate = orderModel.orderPlacedDate
 
 
     return (
@@ -44,6 +45,7 @@ export const OrderTable = (props) => {
                     <th># Of Items</th>
                     <th>Shipping Fee</th>
                     <th>Total Price</th>
+                    <th>Order Date</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -58,14 +60,15 @@ export const OrderTable = (props) => {
                                 {orderModel.items.map(item => (
                                     <p key={item.id}>
                                         <img src={item.imageUrl} alt={item.name} />
-                                        {item.name} - ${item.price.toFixed(2)} x {item.amount}
+                                        {item.name} - ${item.discountedPrice > 0 ? (item.discountedPrice.toFixed(2)) : (item.price.toFixed(2))} x {item.amount}
                                     </p>
                                 ))}
                             </div>
                         </div>
                     </td>
-                    <td>{shipFee}</td>
+                    <td>${shipFee}</td>
                     <td>${totalPrice}</td>
+                    <td>{orderDate}</td>
                     <td>
                         <select value={selectedStatus} onChange={statusChangeHandler} >
                             <option value="CANCELLED">CANCELLED</option>

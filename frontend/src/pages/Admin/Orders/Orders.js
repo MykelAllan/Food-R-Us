@@ -20,9 +20,10 @@ export const AdminOrders = () => {
             <th>Order ID</th>
             <th>Customer ID</th>
             <th>Items</th>
-            <th>Status</th>
             <th>Shipping Fee</th>
             <th>Total Price</th>
+            <th>Order Date</th>
+            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -47,7 +48,7 @@ export const AdminOrders = () => {
                 />
               ))
             ) : (
-              <h2>No products available</h2>
+              <h2>No Orders available</h2>
             )
           )}
         </tbody>

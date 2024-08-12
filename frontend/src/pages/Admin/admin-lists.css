@@ -2,6 +2,7 @@
 #text {
     text-transform: capitalize;
 }
+
 .admin-lists-content {
     display: flex;
     align-items: center;
@@ -103,10 +104,12 @@
         text-transform: capitalize;
         padding: 0.5rem;
     }
+
     .admin-list-price-tag .discount-tag {
         right: 3rem;
-        
+
     }
+
     .admin-actions-icons {
         justify-content: end;
     }
@@ -154,18 +157,23 @@
         width: 30rem;
     }
 }
+
 @media screen and (max-width: 575px) {
+    .dashboard-container {
+        max-width: 560px;
+    }
+
+    .dashboard-content,
+    .prod-paginate {
+        width: 100%;
+    }
+
     .fetching-products {
         left: 28%;
     }
-    .admin-lists-content {
-        width: 20rem;
-    }
-}
-@media screen and (max-width: 425px) {
+
     .admin-lists-content {
         width: 100%;
         margin-inline: 0;
-       
     }
 }

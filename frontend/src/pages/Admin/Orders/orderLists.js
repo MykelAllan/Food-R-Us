@@ -13,9 +13,12 @@ export const AdminOrderLists = (props) => {
     const orderID = order.id.slice(-3)
     const customerID = order.userId.slice(-3)
     const numOfItems = order.totalProducts
-    const status = order.status
     const shippingFee = order.shippingFee > 0 ? `$${order.shippingFee.toFixed(2)}` : `Free`
     const totalPrice = order.totalPrice.toFixed(2)
+    const orderDate = order.orderPlacedDate;
+    const status = order.status
+
+
 
 
     const navigateToUpdate = () => {
@@ -31,9 +34,10 @@ export const AdminOrderLists = (props) => {
             <td data-label='Order ID' scope='row'>{capFirstHandler(orderID)}</td>
             <td data-label='Customer ID'>{capFirstHandler(customerID)}</td>
             <td data-label='Items'>{numOfItems}</td>
-            <td data-label='Status'>{capFirstHandler(status)}</td>
             <td data-label='Shipping Fee'>{shippingFee}</td>
             <td data-label='Total Price'>${totalPrice}</td>
+            <td data-label='Order Date'>{orderDate}</td>
+            <td data-label='Status'>{capFirstHandler(status)}</td>
             <td data-label='Actions'>
                 <div className='admin-actions-icons'>
                     <div onClick={() => setShowConfirmation(true)} className='admin-icons delete'><box-icon color='#fff' name='trash' type='solid' ></box-icon></div>

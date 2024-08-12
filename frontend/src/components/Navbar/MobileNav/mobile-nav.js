@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './mobile-nav.css'
 
 export const MobileNav = (props) => {
-    const { activeLink, activeLinkHandler, toggleMobileNavbar, onSubmit, productName, setProductName } = props.data
+    const { scrollToCollection, activeLink, activeLinkHandler, toggleMobileNavbar, onSubmit, productName, setProductName } = props.data
 
     return (
         <div className='mobile-nav-sidebar'>
@@ -24,7 +24,10 @@ export const MobileNav = (props) => {
                                 <Link
                                     to="/"
                                     className={`nav-link has-after ${activeLink === '/' ? 'active' : ''}`}
-                                    onClick={() => activeLinkHandler('/')}
+                                    onClick={() => {
+                                        activeLinkHandler('/')
+                                        toggleMobileNavbar()
+                                    }}
                                 >
                                     Home
                                 </Link>
@@ -33,7 +36,11 @@ export const MobileNav = (props) => {
                                 <Link
                                     to="/#collection"
                                     className={`nav-link has-after ${activeLink === '/#collection' ? 'active' : ''}`}
-                                    onClick={() => activeLinkHandler('/#collection')}
+                                    onClick={() => {
+                                        activeLinkHandler('/#collection')
+                                        scrollToCollection()
+                                        toggleMobileNavbar()
+                                    }}
                                 >
                                     Collection
                                 </Link>
@@ -42,7 +49,10 @@ export const MobileNav = (props) => {
                                 <Link
                                     to="/shop"
                                     className={`nav-link has-after ${activeLink === '/shop' ? 'active' : ''}`}
-                                    onClick={() => activeLinkHandler('/shop')}
+                                    onClick={() => {
+                                        activeLinkHandler('/shop')
+                                        toggleMobileNavbar()
+                                    }}
                                 >
                                     Shop
                                 </Link>

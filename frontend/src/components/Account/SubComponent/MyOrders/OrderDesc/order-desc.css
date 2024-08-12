@@ -101,6 +101,32 @@
     padding-top: 0.2rem;
 }
 
+.od-summary button {
+    width: 25%;
+    padding: 0.4rem 0;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.15rem;
+    color: #fff;
+}
+
+.od-summary #od-reoder-btn {
+    background-color: #28a745;
+}
+
+.od-summary #od-cancelorder-btn {
+    background-color: #dc3545;
+}
+
+.od-summary #od-reoder-btn:hover {
+    background-color: #218838;
+}
+
+.od-summary #od-cancelorder-btn:hover {
+    background-color: #c82333;
+}
+
+
 @media screen and (max-width: 761px) {
 
     .my-pending-container,
@@ -110,16 +136,20 @@
         max-width: 570px;
     }
 }
+
 @media screen and (max-width: 584px) {
+
     .my-pending-container,
     .my-past-container {
         max-width: 380px;
     }
 }
+
 @media screen and (max-width: 383px) {
     .my-content h1 {
         margin-inline-end: 2rem;
     }
+
     .my-pending-container,
     .my-past-container {
         max-width: 180px;

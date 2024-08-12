@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './main-home.css'
 import { HeroBanner } from './Hero/Hero-Banner'
 import { Collection } from './Collection/Collection'
 import { ProductContext } from '../../context/productContext'
 import { TodaysDeals } from './Products/TodaysDeals/TodaysDeals'
+
 export const MainHome = () => {
     const { fetchDiscountedProducts, discountedProds } = useContext(ProductContext)
-
 
     useEffect(() => {
         fetchDiscountedProducts()

@@ -154,6 +154,11 @@
 /* small screen*/
 
 @media screen and (max-width: 563px) {
+    .products-container {
+        height: unset;
+
+    }
+
     .cards {
         display: flex;
         flex-direction: column;

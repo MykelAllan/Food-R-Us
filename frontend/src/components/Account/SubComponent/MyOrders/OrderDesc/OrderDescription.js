@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../../../../../context/cartContext'
+import { OrderContext } from '../../../../../context/orderContext'
 import { Lists } from './lists'
 
 import './order-desc.css'
 
 export const OrderDescription = (props) => {
-    const { item, toggleHandler } = props.data
+    const { item, toggleHandler, isPastOrders } = props.data
     const { reOrderHandler } = useContext(CartContext)
+    const { deleteAnOrder } = useContext(OrderContext)
+
     const subTotal = (item.totalPrice - item.shippingFee).toFixed(2)
     const shippingFee = item.shippingFee.toFixed(2)
     const totalPrice = item.totalPrice.toFixed(2)
@@ -49,7 +52,12 @@ export const OrderDescription = (props) => {
                     <h3>${shippingFee}</h3>
                     <h3>${totalPrice}</h3>
                 </div>
-                <button onClick={() => reOrderHandler(item.items, orderNum)}>Re-Order</button>
+                {isPastOrders ?
+                    <button id='od-reoder-btn' onClick={() => reOrderHandler(item.items, orderNum)}>Re-Order</button>
+                    :
+                    <button id='od-cancelorder-btn' onClick={() => deleteAnOrder(orderID)} >Cancel Order</button>
+                }
+
             </div>
         </div>
     )

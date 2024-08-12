@@ -8,9 +8,20 @@ import { useNavigate, useParams } from 'react-router-dom';
 export const UpdateProduct = () => {
     const navigate = useNavigate()
     const { productId } = useParams()
-    const { productById, product, setProduct, saveProduct } = useContext(ProductContext)
+    const { isProdFetch, productById, product, setProduct, saveProduct } = useContext(ProductContext)
     const [currentPage, setCurrentPage] = useState("form");
     const [isToggle, setToggle] = useState(false);
+
+    useEffect(() => {
+        productById(productId)
+
+    }, [])
+
+    if (isProdFetch) {
+        return <div>Loading...</div>
+    }
+
+
 
     const submitHandler = async (e) => {
         //prevent the website from loading
@@ -18,24 +29,11 @@ export const UpdateProduct = () => {
 
         //save new product
         saveProduct(productId, product)
-
-        //set the new product to default after submiting
-        setProduct({
-            name: '',
-            category: '',
-            price: 0,
-            discountPercentage: 0,
-            discountedPrice: 0,
-            imageUrl: ''
-        })
-
-        goBack(); // go back to dashboard after saving
     }
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (value >= 0) {
-            setProduct({ ...product, [name]: value })
-        }
+        setProduct({ ...product, [name]: value })
+        console.log('changing ', name)
     }
 
     const handleBlur = (e) => {
@@ -62,10 +60,6 @@ export const UpdateProduct = () => {
         navigate(-1)
     }
 
-    useEffect(() => {
-        productById(productId)
-
-    }, [])
 
 
     return (

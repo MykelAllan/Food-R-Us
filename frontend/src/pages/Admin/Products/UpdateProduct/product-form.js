@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import 'boxicons'
 import './discount-switch.css'
 
 export const ProductForm = (props) => {
     const { product, setProduct, handleChange, handleBlur, submitHandler, isToggle, setToggle } = props.data
-
 
 
     const applyDiscountHandler = (e) => {
@@ -34,9 +33,11 @@ export const ProductForm = (props) => {
         }
     }
 
+
     useEffect(() => {
         toggleDiscountInput()
-    }, [product])
+    }, [])
+
 
 
     return (
@@ -69,7 +70,7 @@ export const ProductForm = (props) => {
 
                 <div className='discount-switch'>
                     <label>Apply Discount</label>
-                    <label class="switch">
+                    <label className="switch">
                         <input id='discount-toggle' type="checkbox" checked={isToggle} onChange={(e) => applyDiscountHandler(e)} />
                         <span class="slider round"></span>
                     </label>

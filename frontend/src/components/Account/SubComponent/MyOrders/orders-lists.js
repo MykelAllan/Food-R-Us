@@ -4,7 +4,7 @@ import { OrderDescription } from './OrderDesc/OrderDescription';
 
 
 export const OrderHistoryLists = (props) => {
-    const { item, index } = props.data
+    const { item, index, reOrderHandler, isPastOrders } = props.data
     const { toggleOrderDesc } = props
 
     const img = item.items[0].imageUrl
@@ -36,7 +36,7 @@ export const OrderHistoryLists = (props) => {
                     <h4>View</h4>
                 </div>
             </div>
-            <OrderDescription data={{ item, toggleHandler }} />
+            <OrderDescription data={{ item, toggleHandler, reOrderHandler, isPastOrders }} />
 
         </>
     );

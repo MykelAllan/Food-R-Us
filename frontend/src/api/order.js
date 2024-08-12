@@ -99,7 +99,7 @@ export const updateStatusOrder = async (orderID, newOrderModel, user, password) 
 //deletes an order
 export const deletesOrder = async (orderID, user, password) => {
     try {
-        await axios.delete(`${BASE_URL}/admin/products/delete-order/${orderID}`, {
+        await axios.delete(`${BASE_URL}/api/orders/delete/${orderID}`, {
             auth: {
                 username: user,
                 password

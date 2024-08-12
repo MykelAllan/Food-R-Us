@@ -69,19 +69,21 @@ export const Dashboard = () => {
                     <button className='btn active'>Access Products</button>
                 </div>
                 <div className='nav-content' onClick={(e) => activeLinkHandler(e, "orders")}>
-                    <div className='nav-icon btn'><box-icon type='solid' name='food-menu'></box-icon></div>
+                    <div className='nav-icon btn'><box-icon type='solid' name='receipt'></box-icon></div>
                     <button className='btn'>Access Orders</button>
                 </div>
 
 
             </div>
             <div className='dashboard-content'>
-                <div>
-                    <h4>Total Products: {totalProductItems}</h4>
-                    <h4>Total Orders: {adminOrders.length}</h4>
+                <div className='dashboard-headers'>
+                    <h4>Total Products</h4>
+                    <h4>Total Orders</h4>
+                    <h4>{totalProductItems}</h4>
+                    <h4>{adminOrders.length}</h4>
                 </div>
                 {currentPage === "products" ?
-                    <div>
+                    <div className='prod-paginate'>
                         <AdminProducts data={{ paginatedProducts }} />
 
                         <div className='dashboard-content-pagination'>

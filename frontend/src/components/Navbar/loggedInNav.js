@@ -9,7 +9,8 @@ import { Alert } from './alert';
 import { MobileNav } from './MobileNav/mobile-nav';
 
 
-export const LoggedInNavbar = ({ searchProductHandler }) => {
+export const LoggedInNavbar = (props) => {
+    const { searchProductHandler, scrollToCollection } = props.data
     const location = useLocation();
     const [activeLink, setActiveLink] = useState(location.pathname);
     const { getTotalCart } = useContext(CartContext)
@@ -20,6 +21,7 @@ export const LoggedInNavbar = ({ searchProductHandler }) => {
 
     const activeLinkHandler = (path) => {
         setActiveLink(path);
+
     };
 
     //search product submit handler
@@ -107,7 +109,10 @@ export const LoggedInNavbar = ({ searchProductHandler }) => {
                                 <Link
                                     to="/#collection"
                                     className={`nav-link has-after ${activeLink === '/#collection' ? 'active' : ''}`}
-                                    onClick={() => activeLinkHandler('/#collection')}
+                                    onClick={() => {
+                                        activeLinkHandler('/#collection')
+                                        scrollToCollection()
+                                    }}
                                 >
                                     Collection
                                 </Link>
@@ -125,7 +130,7 @@ export const LoggedInNavbar = ({ searchProductHandler }) => {
                     </nav>
                 </div>
                 {/* mobile navbar */}
-                <MobileNav data={{ activeLink, activeLinkHandler, toggleMobileNavbar, onSubmit, productName, setProductName }} />
+                <MobileNav data={{ activeLink, activeLinkHandler, scrollToCollection, toggleMobileNavbar, onSubmit, productName, setProductName }} />
             </div >
         </header >
     );
