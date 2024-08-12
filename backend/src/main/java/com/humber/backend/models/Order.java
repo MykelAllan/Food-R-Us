@@ -22,5 +22,6 @@ public class Order {
     private double totalPrice;
     private double shippingFee;
     private int totalProducts;
+    private String orderPlacedDate; //order date
     private String status; // pending | completed
 }

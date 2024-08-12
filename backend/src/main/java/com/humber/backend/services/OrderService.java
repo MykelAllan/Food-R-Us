@@ -7,6 +7,8 @@ import com.humber.backend.repositories.CartRepository;
 import com.humber.backend.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +43,12 @@ public class OrderService {
         String userId = order.getUserId();
         cartRepository.deleteItemsByUserId(userId);
         order.setStatus("PENDING"); //sets the order status to pending
-        order.setTotalProducts(calculateTotalProducts(order.getItems()));
+        order.setTotalProducts(calculateTotalProducts(order.getItems())); //sets the number of products in the order
+
+        //date for when the order is placed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a, yyyy-MM-dd"); // Hour : Min : AM/PM : Year : Month : Day
+        String formattedDate = LocalDateTime.now().format(formatter);
+        order.setOrderPlacedDate(formattedDate);
 
         orderRepository.save(order);
     }

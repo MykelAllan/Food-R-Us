@@ -35,5 +35,17 @@ public class OrderController {
         return "Order created successfully";
     }
 
+    //deletes an order
+    @DeleteMapping("/delete/{id}")
+    public String deleteOrder(@PathVariable String id) {
+        int statusCode = orderService.deleteOrder(id);
+
+        if (statusCode == 1) {
+            return "order was deleted successfully";
+        }
+        return "error deleting the order";
+    }
+
+
 
 }
