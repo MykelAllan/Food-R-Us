@@ -24,7 +24,7 @@ Food-R-Us is an e-commerce website that sells groceries such as fruit, vegetable
   - Search for products by name or category.
   - Filter results based on various criteria.
 
-- **Responsive Design**: (not done)
+- **Responsive Design**: (98% done)
   - Optimized for viewing on both desktop and mobile devices.
 
 ## Technologies Used
