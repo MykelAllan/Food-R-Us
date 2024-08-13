@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import '../../App.css';
 import '../../styles/discount-price.css'
-import '../../styles/responsive-styles.css'
-import { BrowserRouter as Router, Route, Routes, Outlet, useNavigate, useLocation } from 'react-router-dom';
+
+import { Route, Routes, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 import { Login } from '../../pages/Auth/Login/login';
 import { Register } from '../../pages/Auth/Register/register';

@@ -3,6 +3,9 @@
     padding: 3rem;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
+    display: flex;
+    height: 100vh;
 }
 
 /* mobile item count */

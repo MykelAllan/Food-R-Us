@@ -9,15 +9,11 @@ import { useLocation } from 'react-router-dom'
 
 export const Cart = () => {
   const { getTotalCart } = useContext(CartContext)
-  const location = useLocation()
-
 
   const total = getTotalCart()
 
-
-
   return (
-    <div className='cartItems-body container'>
+    <div className='cartItems-body '>
       <div className='cart-items-cont container'>
         <h1 className="cart-title">Cart</h1>
         <div className='mobile-total-items'>
