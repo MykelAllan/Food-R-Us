@@ -1,0 +1,183 @@
+/* fetching product loading */
+.fetching-products {
+    position: absolute;
+    left: 35%;
+}
+
+.products-container {
+    height: 100vh;
+
+}
+
+.products-title {
+    color: #4d7111;
+}
+
+.products-category-title {
+    color: #1f4b2c;
+    text-align: left;
+    margin: 1rem 0;
+    text-transform: capitalize;
+}
+
+/* cards for products */
+.cards {
+    display: grid;
+    justify-content: space-between;
+    align-content: center;
+    grid-template-columns: repeat(5, 2fr);
+    gap: 4rem;
+    width: 100%;
+    padding-block-end: 1.2rem;
+
+}
+
+.card {
+    width: 40%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+    cursor: pointer;
+
+}
+
+.card .card-img {
+    position: relative;
+    width: 8rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .card-img img {
+    filter: drop-shadow(10px 17px 36px #1f4b2c);
+    width: 6rem;
+    aspect-ratio: 1;
+}
+
+.card .card-text {
+    text-transform: capitalize;
+    text-align: left;
+    height: 75%;
+
+}
+
+.card .card-text h3 {
+    color: #1f4b2c;
+}
+
+.card .card-text p {
+    color: #4d7111;
+}
+
+
+.card .card-img .buy-icon {
+    width: 5.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4d7111;
+    padding: 0.1rem;
+    border-radius: 0.5rem;
+    opacity: 1;
+    left: 7rem;
+    bottom: 4%;
+    border: none;
+    cursor: pointer;
+    color: #f4fffc;
+    z-index: 1;
+}
+
+.card-img .buy-icon button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.card-img .buy-icon:hover {
+    background-color: #1f4b2c;
+}
+
+.card:hover .card-img img {
+    transition: 0.5s ease;
+
+}
+
+
+.card:hover .card-img img {
+    transform: translateY(-0.5rem);
+
+}
+
+.card .card-img {
+    background-color: transparent;
+    border-radius: 0.2rem;
+    border: 2px solid #4d7111;
+}
+
+/* media queries for different screens */
+
+/* desktop */
+@media screen and (min-width: 1800px) {
+    .cards {
+        grid-template-columns: repeat(5, 2fr);
+    }
+}
+
+@media screen and (max-width: 1690px) {
+    .cards {
+        grid-template-columns: repeat(4, 2fr);
+    }
+}
+
+/* laptop */
+@media only screen and (max-width: 1390px) {
+    .cards {
+        grid-template-columns: repeat(3, 2fr);
+    }
+}
+
+@media only screen and (max-width: 1160px) {
+    .cards {
+        grid-template-columns: repeat(2, 2fr);
+        gap: 2rem;
+    }
+}
+
+
+/* small screen*/
+
+@media screen and (max-width: 563px) {
+    .products-container {
+        height: unset;
+
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        padding-block-end: 1.5rem;
+        position: relative;
+    }
+
+    .card .card-img {
+        position: unset;
+    }
+
+    .card .card-img .buy-icon {
+        left: 70%;
+        bottom: 15%;
+    }
+
+}

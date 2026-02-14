@@ -1,0 +1,282 @@
+.con {
+    margin-inline: auto;
+}
+
+.td-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.td-headline {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: auto;
+    padding-block: 2rem;
+}
+
+
+.collection-shop-btn.td {
+    margin-top: 0;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.td-cards {
+    display: flex;
+    max-width: 100%;
+}
+
+.pd-cards-container {
+    display: flex;
+    flex-direction: row;
+    scroll-snap-type: inline mandatory;
+    gap: 2rem;
+    overflow-x: auto;
+}
+
+
+.pd-card {
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.pd-card-img {
+    background-color: rgb(237, 228, 228);
+    width: 15rem;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pd-card-img img {
+    width: 6.4rem;
+    aspect-ratio: 1;
+}
+
+.pd-card-text {
+    padding-block: 1.2rem;
+    text-transform: capitalize;
+}
+
+.pd-card-text h2 {
+    font-size: 1.2rem;
+}
+
+.pd-card-text h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.pd-card-add-to-cart {
+    position: absolute;
+    bottom: 3rem;
+    left: 30%;
+    padding: 0.5rem 2rem;
+    background-color: #000;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.35s ease;
+    cursor: pointer;
+}
+
+.pd-card:hover .pd-card-add-to-cart {
+    opacity: 1;
+    bottom: 6rem;
+}
+
+
+/* desktop */
+@media screen and (min-width: 1800px) {
+    .td-container {
+        max-width: 1850px;
+    }
+
+    .pd-cards-container {
+        max-width: 1880px;
+    }
+
+
+    .td-headline {
+        padding-inline: 16rem;
+    }
+
+    .pd-cards-container {
+        margin-inline: 16rem;
+    }
+}
+
+
+@media only screen and (max-width: 1800px) {
+    .td-container {
+        max-width: 1300px;
+    }
+
+    .pd-cards-container {
+        max-width: 1300px;
+    }
+
+    .td-headline {
+        padding-inline: unset;
+
+    }
+
+    .pd-cards-container {
+        margin-inline: auto;
+    }
+
+    .pd-card-img {
+        width: 14.5rem;
+        transition: 0.25s ease;
+    }
+}
+
+
+/* laptop */
+
+@media screen and (max-width: 1346px) {
+
+    .td-container,
+    .pd-cards-container {
+        max-width: 1200px;
+    }
+
+    .pd-card-img {
+        width: 23.4rem;
+        height: 29rem;
+    }
+
+    .pd-card-add-to-cart {
+        left: 38%;
+    }
+}
+
+@media screen and (max-width: 1241px) {
+
+    .td-container,
+    .pd-cards-container {
+        max-width: 1090px;
+    }
+
+
+    .pd-card-img {
+        width: 21rem;
+        height: 28rem;
+    }
+}
+
+@media screen and (max-width: 1105px) {
+    .td-headline {
+        padding: 0;
+        padding-block: 2rem;
+    }
+
+    .td-container {
+        max-width: 800px;
+    }
+
+    .pd-cards-container {
+        margin-inline: auto;
+    }
+
+    .pd-card-img {
+        width: 23.4rem;
+        height: 29rem;
+    }
+}
+
+
+/* small */
+@media screen and (max-width: 807px) {
+
+    .td-container,
+    .pd-cards-container {
+        max-width: 620px;
+    }
+
+    .pd-card-img {
+        width: 18rem;
+        height: 22rem;
+    }
+
+    .pd-card-add-to-cart {
+        left: 34%;
+    }
+
+}
+
+@media screen and (max-width: 622px) {
+    .con {
+        margin-inline: 1.5rem;
+    }
+
+    .pd-cards-container {
+        max-width: 290px;
+    }
+
+    .td-headline {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 382px) {
+    .pd-cards-container {
+        max-width: 100%;
+    }
+
+    .pd-card {
+        width: 100%;
+    }
+
+    .pd-card-content {
+        background-color: rgb(237, 228, 228);
+
+    }
+
+    .pd-card-img {
+        width: 100%;
+    }
+
+    .pd-card-text {
+        padding-inline: 7.9rem;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+
+
+
+/* 
+ laptop 
+@media only screen and (max-width: 1390px) {
+    .pd-cards-container {
+        margin-inline: 10rem;
+    }
+
+    .pd-card-img {
+        width: 25rem;
+        height: 25rem;
+    }
+}
+
+@media only screen and (max-width: 1160px) {
+    .pd-cards-container {
+        margin-inline: 10rem;
+    }
+} 
+*/

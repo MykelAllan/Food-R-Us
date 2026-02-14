@@ -1,0 +1,84 @@
+.nav-menu-mobile-open-btn,
+.nav-menu-mobile-close-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-nav-sidebar {
+    z-index: 5;
+}
+/* seartch bar */
+.mobile-nav-container .input-search-product {
+    display: block;
+}
+
+.mobile-nav-container {
+    z-index: 101;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 22rem;
+    width: 100%;
+    background-color: white;
+    padding: 2rem 3rem;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navbar-mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mobile-nav-container.active {
+    visibility: visible;
+    transform: translateX(0);
+    transition: 0.4s ease;
+}
+
+.mobile-nav-sidebar .mobile-nav-container .mobile-nav-logo-toggle {
+    display: flex;
+    justify-content: space-between;
+    margin-block-end: 3rem;
+
+}
+
+.mobile-nav-logo-toggle .logo a {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.mobile-nav-sidebar .mobile-nav {
+    position: absolute;
+    top: 7rem
+}
+
+.mobile-nav-sidebar .mobile-nav .nav {
+    position: relative;
+}
+
+
+.mobile-nav-sidebar .mobile-nav .nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.mobile-nav .nav .nav-links .nav-link {
+    font-size: 1rem;
+}

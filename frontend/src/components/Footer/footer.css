@@ -1,0 +1,25 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 2rem 2rem;
+  color: #6c757d;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, .1), 0 0.125em 0.5em rgba(0, 0, 0, .15);
+  margin-block-start: 4rem;
+}
+
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* small screen */
+@media screen and (max-width: 451px) {
+  .footer.active {
+    display: none;
+  }
+}

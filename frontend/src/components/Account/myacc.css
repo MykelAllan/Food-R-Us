@@ -1,0 +1,230 @@
+.myacc-container {
+    height: 100vh;
+    margin-inline: 1.5rem;
+    padding: 2rem;
+}
+
+.myacc-title {
+    text-align: center;
+    color: #000000;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.myacc-content {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    height: 100%;
+
+}
+
+/* myacc-nav styles */
+.myacc-nav-link-icon.arrow {
+    display: none;
+}
+
+.myacc-nav-container {
+    width: 15rem;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 2rem;
+}
+
+.myacc-nav-link {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    background-color: transparent;
+}
+
+.myacc-nav-link-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+.myacc-nav-link button {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-align: start;
+    margin-left: 0.5rem;
+}
+
+.myacc-nav-link:hover {
+    background-color: #fff;
+    cursor: pointer;
+    border-left: 0.3rem solid #4d7111;
+}
+
+.myacc-nav-link:hover button {
+    background-color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* myacc-content styles */
+
+.myacc-content-container {
+    width: 70%;
+    background-color: transparent;
+    padding: 1.2rem;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.myacc-content-header {
+    text-transform: capitalize;
+    font-size: 1rem;
+    text-align: start;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-access-btn {
+    border: none;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    background-color: #4d7111;
+    color: #fff;
+    font-weight: 600;
+}
+
+.admin-access-btn:hover {
+    transform: scale(1.02)
+}
+
+@media screen and (max-width: 980px) {
+    .myacc-content-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .admin-access-btn {
+        width: 12rem;
+        padding-block: 1rem;
+    }
+}
+
+@media screen and (min-width: 761px) {
+
+    /* allows active nav display for medium screens*/
+    /* when active */
+    .myacc-nav-link.active {
+        background-color: #fff;
+        font-weight: 600;
+        border-left: 0.3rem solid #4d7111;
+    }
+
+    .myacc-nav-link.active button {
+        background-color: #fff;
+        font-weight: 600;
+    }
+
+
+}
+
+@media screen and (max-width: 760px) {
+    .myacc-container {
+        background-color: rgb(230, 230, 204);
+        border-radius: 0.4rem;
+        height: 100%;
+    }
+
+    .myacc-content {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+    }
+
+    .myacc-content-header {
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .myacc-content-header h1 {
+        text-align: center;
+    }
+
+    .myacc-content-container {
+        border: none;
+    }
+
+
+    .myacc-title {
+        display: none;
+    }
+
+    .myacc-nav-container {
+        width: 70%;
+        gap: 1.2rem;
+    }
+
+    .myacc-nav-link {
+        background-color: #fff;
+        border-radius: 0.4rem;
+        padding-inline-end: 1rem;
+    }
+
+    .myacc-nav-link-icon.arrow {
+        display: flex;
+    }
+
+    .myacc-nav-link.active {
+        background-color: none;
+    }
+
+    .myacc-nav-link.active button {
+        background-color: none;
+    }
+
+    .myacc-page-overlay {
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+
+    .myacc-page-overlay.active {
+        visibility: visible;
+
+    }
+}
+
+@media screen and (max-width: 495px) {
+
+    .myacc-content-container,
+    .myacc-nav-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .myacc-container {
+        padding: 0.9rem;
+        margin-inline: 1rem;
+    }
+    .myacc-content-header h1 {
+        font-size: 1.8rem;
+    }
+    .admin-access-btn {
+        width: 100%;
+    }
+
+}

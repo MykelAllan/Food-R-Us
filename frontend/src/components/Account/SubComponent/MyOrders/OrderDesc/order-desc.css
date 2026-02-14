@@ -1,0 +1,157 @@
+.od-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 450px;
+    z-index: 110;
+    background-color: #fff;
+    transition: 0.25s ease;
+    transform: translateX(100%);
+    padding-block-end: 1rem;
+}
+
+.od-container.active {
+    transition: 0.45s ease;
+    transform: translateX(0);
+}
+
+.od-close-btn {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    cursor: pointer;
+}
+
+.od-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding-block-start: 1.5rem;
+}
+
+.od-products {
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding-block: 0.8rem;
+}
+
+/* card-lists */
+
+
+.od-order-lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+    height: auto;
+    max-height: 30rem;
+    overflow-y: auto;
+}
+
+.od-order-list {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3rem;
+    gap: 2rem;
+    padding-block: 0.8rem;
+    padding-inline: 1rem;
+    width: 90%;
+}
+
+.od-order-list h3 {
+    text-align: start;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+
+.od-order-list-text {
+    padding-inline: 0.5rem;
+    width: 100%;
+}
+
+.od-order-list-img {
+    background-color: aliceblue;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.od-order-list-img img {
+    width: 5rem;
+    aspect-ratio: 1;
+}
+
+.od-summary {
+    display: flex;
+    align-items: start;
+    gap: 3rem;
+    margin-inline-start: 2rem;
+    margin-block-start: 1rem;
+}
+
+.od-summary h3 {
+    text-align: start;
+    font-weight: 600;
+    padding-top: 0.2rem;
+}
+
+.od-summary button {
+    width: 25%;
+    padding: 0.4rem 0;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.15rem;
+    color: #fff;
+}
+
+.od-summary #od-reoder-btn {
+    background-color: #28a745;
+}
+
+.od-summary #od-cancelorder-btn {
+    background-color: #dc3545;
+}
+
+.od-summary #od-reoder-btn:hover {
+    background-color: #218838;
+}
+
+.od-summary #od-cancelorder-btn:hover {
+    background-color: #c82333;
+}
+
+
+@media screen and (max-width: 761px) {
+
+    .my-pending-container,
+    .my-past-container {
+        margin-inline: auto;
+        width: 100%;
+        max-width: 570px;
+    }
+}
+
+@media screen and (max-width: 584px) {
+
+    .my-pending-container,
+    .my-past-container {
+        max-width: 380px;
+    }
+}
+
+@media screen and (max-width: 383px) {
+    .my-content h1 {
+        margin-inline-end: 2rem;
+    }
+
+    .my-pending-container,
+    .my-past-container {
+        max-width: 180px;
+    }
+}

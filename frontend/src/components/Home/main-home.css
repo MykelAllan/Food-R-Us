@@ -1,0 +1,322 @@
+
+
+.home-container .section {
+    padding-block: 2rem;
+}
+
+.hero-banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin-inline: 1.5rem;
+}
+
+.hero-banner-slides {
+    display: flex;
+    overflow-y: auto;
+    gap: 2rem;
+    padding-block-end: 15px;
+    margin-block-end: -15px;
+    scroll-snap-type: inline mandatory;
+    overflow-y: hidden;
+
+}
+
+.hero-banner-slide {
+    scroll-snap-align: start;
+    padding: 8rem 6rem;
+    display: flex;
+    min-width: 100%;
+}
+
+.hero-banner-slide:first-child {
+    background-color: #F8BBD0;
+}
+
+
+.hero-banner-slide:nth-child(2) {
+    background-color: #F8D3D5;
+}
+
+.hero-banner-slide:nth-child(3) {
+    background-color: #FFF9E6;
+}
+
+
+/* hero banner text */
+.hero-banner-slide .hero-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: start;
+    width: 50%;
+    z-index: 10;
+}
+
+.hero-texts h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.hero-texts .hero-subheading {
+    font-weight: 600;
+    color: #004D40;
+
+}
+
+.hero-price-shop-overlay {
+    visibility: hidden;
+}
+
+.hero-price-shop {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    bottom: 4rem;
+}
+
+.hero-texts .hero-price {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.hero-texts .hero-shop-btn {
+    width: 9rem;
+    padding: 0.8rem 0.8rem;
+    background-color: #004D40;
+    color: #f4fffc;
+    border: none;
+    border-radius: 0.3rem;
+    font-weight: 600;
+}
+
+.hero-texts .hero-shop-btn:hover {
+    background-color: #00332D;
+}
+
+
+/* hero - img */
+.hero-banner-slide {
+    position: relative;
+}
+
+.hero-banner-slide .hero-img {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.hero-banner-slide .hero-img img {
+    width: 35rem;
+    aspect-ratio: 1;
+
+}
+
+.hero-banner-slide:nth-child(3) {
+    position: relative;
+}
+
+.hero-banner-slide:nth-child(3) .hero-img {
+    top: 4rem;
+    right: 4rem;
+
+}
+
+.hero-banner-slide:nth-child(3) .hero-img img {
+    width: 28rem;
+
+}
+
+/* desktop */
+
+@media screen and (min-width: 2000px) {
+    .hero-banner-container {
+        margin-inline: auto;
+        max-width: 1900px;
+    }
+
+}
+
+/* medium screen */
+@media screen and (max-width: 1467px) {
+    .hero-banner-container {
+        margin-inline: 3.5rem;
+    }
+
+}
+
+@media screen and (max-width: 1267px) {
+    .hero-banner-container {
+        margin-inline: 2.5rem;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .hero-banner-container {
+        margin-inline: 2rem;
+    }
+
+    .hero-banner-slide .hero-img {
+        bottom: -4rem;
+        right: -1rem;
+    }
+
+}
+
+@media screen and (max-width: 1110px) {
+    .hero-banner-container {
+        margin-inline: 1rem;
+    }
+
+    .hero-banner-slide .hero-texts {
+        width: 60%;
+    }
+
+
+}
+
+/* small screen */
+
+@media screen and (max-width: 1019px) {
+    .hero-banner-slide {
+        padding: 7rem 5.5rem;
+    }
+    .hero-banner-slide:nth-child(3) .hero-img {
+        top: -1rem;
+        right: 2rem;
+    }
+
+    .hero-banner-slide:nth-child(3) .hero-img img {
+        width: 24rem;
+
+    }
+
+}
+
+@media screen and (max-width: 930px) {
+    .hero-banner-slide {
+        padding: 6rem 4.5rem;
+    }
+
+    .hero-banner-slide .hero-texts {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .hero-banner-slide .hero-texts {
+        width: 80%;
+    }
+
+    .hero-banner-slide .hero-img img {
+        width: 30rem;
+    }
+
+    .hero-banner-slide:nth-child(3) .hero-img {
+        top: -1rem;
+        right: 0;
+    }
+
+    .hero-banner-slide:nth-child(3) .hero-img img {
+        width: 20rem;
+
+    }
+
+
+}
+
+@media screen and (max-width: 750px) {
+    .hero-banner-slide .hero-texts {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .hero-banner-slide {
+        padding: 5rem 2rem;
+    }
+}
+
+@media screen and (max-width: 595px) {
+    .hero-banner-slide {
+        padding: 3rem 2rem;
+    }
+
+    .hero-banner-slide .hero-texts {
+        width: 90%;
+    }
+
+    .hero-banner-slide .hero-img img {
+        width: 25rem;
+    }
+
+    .hero-price-shop {
+        bottom: 1.5rem;
+    }
+
+
+}
+
+@media screen and (max-width: 475px) {
+    .hero-banner-slide {
+        padding: 3rem 2rem;
+    }
+
+    .hero-banner-slide .hero-texts {
+        width: 100%;
+    }
+
+    .hero-banner-slide .hero-img img {
+        width: 20rem;
+    }
+
+    .hero-banner-slide:nth-child(3) .hero-img img {
+        width: 18rem;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .hero-texts h1 {
+        font-size: 2rem;
+    }
+
+    .hero-texts .hero-subheading {
+        font-size: 0.8rem;
+    }
+
+    .hero-banner-slide {
+        padding: 5rem 2rem;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .hero-texts h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-texts .hero-subheading {
+        font-size: 0.8rem;
+    }
+
+    .hero-price-shop .hero-price {
+        font-size: 1.5rem;
+    }
+
+    .hero-banner-slide {
+        padding: 3rem 2rem;
+        height: 35rem;
+    }
+
+    .hero-banner-slide .hero-texts .hero-price {
+        margin-top: 10rem;
+    }
+
+}
+

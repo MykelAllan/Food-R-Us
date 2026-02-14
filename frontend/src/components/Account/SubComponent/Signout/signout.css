@@ -1,0 +1,82 @@
+/* signout */
+
+.signout-content {
+    width: 100%;
+    margin-inline: auto;
+}
+
+.signout-content #signout-btn {
+    border-radius: 0.4rem;
+    background-color: #4d7111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+    margin-block: 5rem;
+    padding: 1rem 3rem;
+}
+
+.signout-content button:hover {
+    transform: scale(1.02);
+}
+
+/* signout confirmation */
+.signout-confirmation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+}
+
+.signout-confirmation-content {
+    display: grid;
+    place-items: center;
+    width: 50%;
+    max-width: 450px;
+    height: 30%;
+    background-color: #fff;
+    border: 2px solid #4d7111;
+}
+
+.signout-confirmation-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    text-align: center;
+
+}
+
+.signout-confirmation-buttons .sc-btn {
+    width: 40%;
+    height: 2.5rem;
+    font-weight: 600;
+}
+
+.signout-confirmation-buttons button:nth-child(1) {
+    background-color: #4d7111;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.signout-confirmation-buttons button:nth-child(2) {
+    background-color: #fff;
+    border: 2px solid #4d7111;
+    color: #4d7111;
+}
+
+@media screen and (max-width: 538px) {
+    .signout-confirmation-content {
+        width: 90%;
+    }
+}

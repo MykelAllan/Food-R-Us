@@ -1,0 +1,107 @@
+/* go back icon */
+.myacc-page-content .dashboard-back-icon {
+    display: none;
+}
+
+/* content small devices */
+@media screen and (max-width: 760px) {
+    .myacc-page-container {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        visibility: hidden;
+        transition: 0.25s ease;
+        opacity: 0;
+    }
+
+    .myacc-page-content {
+
+        display: block;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #fff;
+        transition: 0.25s ease;
+        transform: translateX(-100%);
+        z-index: 100;
+    }
+
+    .page-content-title {
+        display: flex;
+        justify-content: space-evenly;
+        margin-inline-end: 14rem;
+        margin-block-start: 1rem;
+    }
+
+    .myacc-page-content .dashboard-back-icon {
+        display: flex;
+    }
+
+    /* active / show-page-container */
+    .myacc-page-container.active {
+        visibility: visible;
+        transition: 0.45s ease;
+        opacity: 1;
+    }
+
+    .myacc-page-container.active .myacc-page-content {
+
+        transition: 0.45s ease;
+        transform: translateX(0);
+    }
+
+}
+
+@media screen and (max-width: 467px) {
+    .page-content-title {
+        margin-inline-end: 10rem;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .page-content-title {
+        margin-inline-end: 5rem;
+    }
+
+}
+
+/* height */
+
+@media  (max-width: 760px) and (max-height: 732px) {
+    .my-content {
+        gap: 0rem;
+    }
+    .ohl-card-img {
+        width: 6rem;
+    }
+
+    .ohl-card::before {
+        width: 50%;
+        left: 2.7rem;
+        top: -0.4rem;
+    }
+    .ohl-card::after {
+        width: 47%;
+        left: 2.85rem;
+        top: -.7rem
+    }
+    .ohl-card:hover::before {
+        top: -0.5rem;
+    }
+    .ohl-card:hover::after {
+        top: -.9rem
+    }
+}
+@media  (max-width: 760px) and (max-height: 644px) {
+    .my-content h1 {
+        padding-block: 1.5rem;
+    }
+    .ohl-cards {
+        padding-block: 1rem;
+    }
+}

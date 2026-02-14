@@ -1,0 +1,258 @@
+.collection-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 20rem;
+    max-width: 2000px;
+}
+
+.collection-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 2rem;
+    justify-items: center;
+}
+
+.collection-card:first-child {
+    background-color: #F8BBD0;
+}
+
+.collection-card:nth-child(2) {
+    background-color: #F8D3D5;
+}
+
+.collection-card:nth-child(3) {
+    background-color: #FFF9E6;
+}
+
+
+/* content */
+
+.collection-card {
+    display: flex;
+    flex-direction: row;
+    height: 28rem;
+    width: 23.3rem;
+    padding: 2rem;
+    padding-block-end: 2rem;
+    position: relative;
+}
+
+
+/* texts */
+
+.collection-card .collection-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: start;
+    height: 40%;
+}
+
+.collection-card .collection-texts h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.collection-card .collection-texts .collection-subheading {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.collection-texts .collection-shop-btn {
+    display: flex;
+    cursor: pointer;
+    width: 7rem;
+    position: absolute;
+    bottom: 2rem;
+
+}
+
+.collection-shop-btn .shop-btn {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+
+}
+
+.collection-shop-btn .shop-arrow-icon {
+    display: flex;
+    align-items: center;
+    transition: 0.25s ease;
+}
+
+.collection-shop-btn:hover .shop-arrow-icon {
+    transform: translateX(50%);
+}
+
+
+
+/* image */
+
+.collection-card .collection-img {
+    position: absolute;
+    bottom: 3rem;
+    right: 1rem;
+}
+
+.collection-card .collection-img img {
+    width: 15rem;
+    aspect-ratio: 1;
+    transition: 0.25s ease;
+
+
+}
+
+/* card-hover */
+
+
+.collection-card:hover .collection-img img {
+    transform: scale(1.1)
+}
+
+/* large screen default */
+
+/* medium */
+
+@media screen and (max-width: 1467px) {
+    .collection-container {
+        max-width: 1400px;
+    }
+
+    .collection-container {
+        margin-inline: 4rem;
+    }
+}
+
+@media screen and (max-width: 1295px) {
+    .collection-container {
+        max-width: 1200px;
+        margin-inline: 2rem;
+    }
+
+    .collection-cards {
+        gap: 2rem;
+    }
+
+    .collection-card:nth-child(2) .collection-texts {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 1241px) {
+    .collection-card {
+        width: 21rem;
+    }
+}
+
+
+@media screen and (max-width: 1105px) {
+    .collection-cards {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .collection-card {
+        width: 48.3rem;
+        height: 29rem;
+    }
+
+
+    .collection-card .collection-img {
+        bottom: 1rem;
+    }
+
+    .collection-card .collection-img img {
+        width: 25rem;
+    }
+
+}
+
+/* small */
+
+@media screen and (max-width: 806px) {
+    .collection-card {
+        width: 38.3rem;
+    }
+
+    .collection-card .collection-img {
+        bottom: 1rem;
+    }
+
+    .collection-card .collection-img img {
+        width: 21rem;
+
+    }
+}
+
+
+@media screen and (max-width: 647px) {
+    .collection-container {
+        max-width: 620px;
+    }
+
+    .collection-cards {
+        min-width: 100%;
+    }
+
+    .collection-card {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 498px) {
+    .collection-card .collection-img img {
+        width: 15rem;
+
+    }
+
+    .collection-card .collection-img {
+        bottom: 5rem;
+        right: 4rem;
+    }
+
+}
+
+
+@media screen and (max-width: 385px) {
+    .collection-card .collection-img img {
+        width: 13rem;
+    }
+
+    .collection-card .collection-img {
+        right: 3.5rem;
+    }
+
+}
+@media screen and (max-width: 367px) {
+    .hero-banner-slide:nth-child(3) .hero-img {
+        right: 0rem;
+    }
+
+}
+
+
+@media screen and (max-width: 350px) {
+    .collection-card .collection-img {
+        right: 2rem;
+    }
+
+}
+
+
+@media screen and (max-width: 325px) {
+    .collection-card .collection-img {
+        right: 1.5rem;
+    }
+    .hero-banner-slide:nth-child(3) .hero-img {
+        right: 1rem;
+    }
+
+    .hero-banner-slide:nth-child(3) .hero-img img {
+        width: 15rem;
+    }
+}
