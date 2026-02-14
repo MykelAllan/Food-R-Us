@@ -7,9 +7,16 @@ Food-R-Us is an e-commerce website that sells groceries such as fruit, vegetable
 Check out a short video demonstration of the application's key features and interface:
 
 <a href="https://streamable.com/gqn803">
+<<<<<<< HEAD
   <img src="https://cdn.discordapp.com/attachments/709170446536409148/1448730627787587645/thumbnail.png?ex=693c5309&is=693b0189&hm=66515a8a8102031c70295259ea4729c7b79c4987def55fa7b02f6097de2f7de9" alt="Food-R-Us Preview" hieght="200" width="500">
 </a>
 
+=======
+  <img src="/preview/thumbnail.png" alt="Food-R-Us Preview" hieght="200" width="500">
+</a>
+
+
+>>>>>>> c868634 (initial commit)
 ## Features
 
 - **Hero Section**: 

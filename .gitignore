@@ -1,2 +1,7 @@
 .idea/
+<<<<<<< HEAD
 target/
+=======
+target/
+.gitignore/
+>>>>>>> c868634 (initial commit)
